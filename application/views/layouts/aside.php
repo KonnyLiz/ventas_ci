@@ -11,18 +11,10 @@
             <a href="<?php echo base_url();?>dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
         </li>
         <li class="sub-menu">
-            <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>CRM</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>Configuración</span><i class="arrow fa fa-angle-right pull-right"></i></a>
             <ul>
-              
-                <li><a href="ui-alerts-notifications.html">Alerts &amp; Notifications</a></li>
-                <li><a href="ui-panels.html">Panels</a></li>
-                <li><a href="ui-buttons.html">Buttons</a></li>
-                <li><a href="ui-slider-progress.html">Sliders &amp; Progress</a></li>
-                <li><a href="ui-modals-popups.html">Modals &amp; Popups</a></li>
-                <li><a href="ui-icons.html">Icons</a></li>
-                <li><a href="ui-grid.html">Grid</a></li>
-                <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                <li><a href="ui-nestable-list.html">Nestable Lists</a></li>
+               <li><a href="<?php echo base_url();?>mantenimiento/permisos">Permisos</a></li>
+               
             </ul>
         </li>
         <li class="sub-menu">

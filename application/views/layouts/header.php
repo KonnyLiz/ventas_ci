@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
    <?php
-    require_once('estilos.php');
+    require_once('flyweit.php');
    ?>
 
 </head>
@@ -34,7 +34,7 @@
                                 <a href="#"><i class="fa fa-user"></i>Perfil</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>calendarios/index"><i class="fa fa-calendar"></i>Calendario</a>
+                               <a href="<?php echo base_url(); ?>calendarios/index"><i class="fa fa-calendar"></i>Calendario</a>
                             </li>
                             <li>
                                 <a href="<?php echo base_url(); ?>auth/logout"><i class="fa fa-power-off"></i>Salir</a>

@@ -8,21 +8,18 @@
     </div>
     <!-- ./wrapper -->
 <!-- jQuery 3 -->
-
     <script src='<?php echo base_url(); ?>assets/fullcalendar/lib/moment.min.js'></script>
 <script src='<?php echo base_url(); ?>assets/fullcalendar/lib/jquery.min.js'></script>
 <script src='<?php echo base_url(); ?>assets/fullcalendar/fullcalendar.min.js'></script>   
 <script src='<?php echo base_url(); ?>assets/fullcalendar/locale/es.js'></script> 
- 
-    <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/nanoScroller/jquery.nanoscroller.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/application.js"></script>
-    <!--Page Leve JS -->
-    <script src="<?php echo base_url(); ?>assets/plugins/dataTables/js/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
 
+
+    
+    <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/application.js"></script>
     <!--Page Level JS-->
     <script src="<?php echo base_url(); ?>assets/plugins/countTo/jquery.countTo.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/weather/js/skycons.js"></script>
     <script src="<?php echo base_url(); ?>assets/templates/jquery-ui/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/templates/jquery-print/jquery.print.js"></script>
 
@@ -30,12 +27,10 @@
     <script src="<?php echo base_url(); ?>assets/plugins/todo/js/todos.js"></script>
     <!--Load these page level functions-->
     <script>
-
-
 $(document).ready(function () {
     var base_url= "<?php echo base_url();?>";
 
-//calendario
+    //calendario
     $.post('<?php echo base_url();?>Calendarios/getEventos',
             function(data){
                 
@@ -187,12 +182,7 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-    //PRODUCTOS; CLIENTES
+    
     $(".btn-remove").on("click", function(e){
         e.preventDefault();
         var ruta = $(this).attr("href");
