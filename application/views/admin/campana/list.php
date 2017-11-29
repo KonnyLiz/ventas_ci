@@ -10,7 +10,7 @@
                             <li class="active">Campaña</li>
                         </ul>
                     </div>
-                        <h1 class="h1">Campaanaso</h1>
+                        <h1 class="h1">Campaña</h1>
                 </div>
                     
 <!-- Content Wrapper. Contains page content -->
