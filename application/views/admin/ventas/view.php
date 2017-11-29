@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-xs-6">	
 		<b>CLIENTE</b><br>
-		<b>Nombre:</b> <?php echo $venta->nombre;?> <br>
+		<b>Nombre:</b> <?php echo $venta->nombres." ".$venta->apellidos;?> <br>
 		<b>Telefono:</b> <?php echo $venta->telefono;?> <br>
 		<b>Direccion</b> <?php echo $venta->direccion;?><br>
 	</div>	
@@ -19,9 +19,11 @@
 		<b>Tipo de Comprobante:</b> <?php echo $venta->tipo_comprobante;?><br>
 		<b>Serie:</b> <?php echo $venta->serie;?><br>
 		<b>Nro de Comprobante:</b> <?php echo $venta->num_documento;?><br>
-		<b>Fecha</b> <?php echo $venta->fecha;?>
+		<b>Fecha</b> <?php echo $venta->fecha;?><br>
+		
 	</div>	
 </div>
+<b>Vendedor: </b> <?php echo $venta->usuNombre." ".$venta->usuApellido;?><br>
 <br>
 <div class="row">
 	<div class="col-xs-12">
@@ -29,7 +31,7 @@
 			<thead>
 				<tr>
 					<th>Codigo</th>
-					<th>Nombre</th>
+					<th>Nombre </th>
 					<th>Precio</th>
 					<th>Cantidad</th>
 					<th>Importe</th>
