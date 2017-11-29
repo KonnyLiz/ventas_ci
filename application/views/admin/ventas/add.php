@@ -53,22 +53,29 @@
                                 </div>
                                  
                             </div>
-                            <div class="form-group">
+
+                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="">Cliente:</label>
-                                    <div class="input-group">
-                                        <input type="hidden" name="idcliente" id="idcliente">
-                                        <input type="text" class="form-control" disabled="disabled" id="cliente">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-default" ><span class="fa fa-search"></span> Buscar</button>
-                                        </span>
-                                    </div><!-- /input-group -->
-                                </div> 
-                                <div class="col-md-3">
+                                    <input type="hidden" name="idcliente" id="idcliente">
+                                    <input type="text" class="form-control" disabled="disabled" id="cliente">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="">&nbsp;</label>
+                                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-default" ><span class="fa fa-search"></span> Buscar</button>
+                                    <label for="">&nbsp;</label>
+                                    <button id="btn-agregar" type="button" class="btn btn-success btn-flat btn-block"><span class="fa fa-plus"></span> Agregar Cliente</button>
+                                </div>
+                                  <div class="col-md-3">
                                     <label for="">Fecha:</label>
                                     <input type="date" class="form-control" name="fecha" required>
                                 </div>
                             </div>
+
+
+                            
+                              
+                           
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="">Producto:</label>
