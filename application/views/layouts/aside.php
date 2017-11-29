@@ -11,7 +11,7 @@
             <a href="<?php echo base_url();?>dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
         </li>
         <li class="sub-menu">
-            <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>UI Elements</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>CRM</span><i class="arrow fa fa-angle-right pull-right"></i></a>
             <ul>
               
                 <li><a href="ui-alerts-notifications.html">Alerts &amp; Notifications</a></li>

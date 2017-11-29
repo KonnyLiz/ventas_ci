@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
    <?php
-    require_once('flyweit.php');
+    require_once('estilos.php');
    ?>
 
 </head>

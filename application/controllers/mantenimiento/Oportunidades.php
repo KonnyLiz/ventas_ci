@@ -47,8 +47,15 @@ class Oportunidades extends CI_Controller {
 			'estado' => "1",
 			
 		);
+		$oportunidad = "Contacto con: ".$nombre;
+		$data1  = array(
+			'nombre' => $oportunidad,
+			'fecha_i' => $llamada,
+			'fecha_f' => $llamada,
+		);
 
 		if ($this->Oportunidades_model->save($data)) {
+			$this->Oportunidades_model->save1($data1);
 			redirect(base_url()."mantenimiento/Oportunidades");
 		}
 		else{

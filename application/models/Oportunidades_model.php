@@ -22,4 +22,8 @@ class Oportunidades_model extends CI_Model {
 		return $this->db->update("oportunidad",$data);
 	}
 
+	public function save1($data){
+		return $this->db->insert("eventos",$data);
+	}
+
 }

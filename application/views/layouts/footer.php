@@ -9,12 +9,20 @@
     <!-- ./wrapper -->
 <!-- jQuery 3 -->
 
-    <script src="<?php echo base_url(); ?>assets/js/jquery-1.10.2.min.js"></script>
+    <script src='<?php echo base_url(); ?>assets/fullcalendar/lib/moment.min.js'></script>
+<script src='<?php echo base_url(); ?>assets/fullcalendar/lib/jquery.min.js'></script>
+<script src='<?php echo base_url(); ?>assets/fullcalendar/fullcalendar.min.js'></script>   
+<script src='<?php echo base_url(); ?>assets/fullcalendar/locale/es.js'></script> 
+ 
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/nanoScroller/jquery.nanoscroller.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/application.js"></script>
+    <!--Page Leve JS -->
+    <script src="<?php echo base_url(); ?>assets/plugins/dataTables/js/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
+
     <!--Page Level JS-->
     <script src="<?php echo base_url(); ?>assets/plugins/countTo/jquery.countTo.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/weather/js/skycons.js"></script>
     <script src="<?php echo base_url(); ?>assets/templates/jquery-ui/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/templates/jquery-print/jquery.print.js"></script>
 
@@ -22,8 +30,178 @@
     <script src="<?php echo base_url(); ?>assets/plugins/todo/js/todos.js"></script>
     <!--Load these page level functions-->
     <script>
+
+
 $(document).ready(function () {
     var base_url= "<?php echo base_url();?>";
+
+//calendario
+    $.post('<?php echo base_url();?>Dashboard/getEventos',
+            function(data){
+                
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay,listWeek,listDay'
+                    },
+                    defaultDate: new Date(),
+                    navLinks: true, // can click day/week names to navigate views
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: $.parseJSON(data),
+
+
+                    eventResize: function(event, delta, revertFunc) {
+                        var id = event.id;
+                        var ff = event.end.format('YYYY-MM-DD HH:mm');
+                        var fi = event.start.format('YYYY-MM-DD HH:mm');
+                        
+
+                        if (!confirm("Esta seguro de cambiar la fecha?")) {
+                            revertFunc();
+                        }else{
+                            $.post("<?php echo base_url();?>Dashboard/updEvento",
+                            {
+                                id:id,
+                                fecini:fi,
+                                fecfin:ff
+                            },
+                            function(data){
+                                if (data == 1) {
+                                    alert('Se cambio correctamente');
+                                }else{
+                                    alert('ERROR.');
+                                }
+                            });
+                        }
+                    },
+
+                    eventDrop: function(event, delta, revertFunc){
+                        var id = event.id;
+                        var ff = event.end.format('YYYY-MM-DD HH:mm');
+                        var fi = event.start.format('YYYY-MM-DD HH:mm');
+                        
+
+                        if (!confirm("Esta seguro??")) {
+                            revertFunc();
+                        }else{
+                            $.post("<?php echo base_url();?>Dashboard/updEvento",
+                            {
+                                id:id,
+                                fecini:fi,
+                                fecfin:ff
+                            },
+                            function(data){
+                                if (data == 1) {
+                                    alert('Se actualizo correctamente');
+                                }else{
+                                    alert('ERROR.');
+                                }
+                            });
+                        }
+                    },
+
+
+                    dayClick: function(date, jsEvent, view) {
+
+                    
+                        $('#modalEvento2').modal();
+
+                        if (event.url) {
+                            window.open(event.url);
+                            return false;
+                        }
+
+                    },
+
+                     eventRender: function(event, element) {
+                        var el = element.html();
+                        element.html("<div style='width:80%;float:left;'>" + el + "</div>" + 
+                                    "<div style='color:#fff;text-align:right;' class='closeE'>" +
+                                        "<i class='fa fa-times'></i>" +
+                                    "</div>");
+
+                        element.find('.closeE').click(function(){
+                            $('#calendar').fullCalendar( 'removeEvents', event.id);
+                                var id = event.id;
+                                $.post("<?php echo base_url();?>Dashboard/deleteEvento",
+                                {
+                                    id:id
+                                });
+
+                        });
+                    },
+
+                    eventClick: function(event, jsEvent, view) {
+
+                        // alert(event.title);
+                        $('#mhdnIdEvento').val(event.id);
+                        $('#mtitulo').html(event.title);
+                        $('#txtBandaRP').val(event.title);
+                        $('#fi').val(event.start.format('YYYY-MM-DD HH:mm'));
+                        $('#ff').val(event.end.format('YYYY-MM-DD HH:mm'));
+                        $('#modalEvento').modal();
+
+                        if (event.url) {
+                            window.open(event.url);
+                            return false;
+                        }
+
+                    }
+                   
+                    
+                });
+            });
+    
+            
+      
+    $('#btnUpdEvento').click(function(){
+        var nome = $('#txtBandaRP').val();
+        var fi = $('#fi').val();
+        var ff = $('#ff').val();
+        var ide = $('#mhdnIdEvento').val();
+
+        $.post("<?php echo base_url();?>Dashboard/updEvento2",
+        {
+            nom: nome,
+            fecini:fi,
+            fecfin:ff,
+            id: ide
+        },
+        function(data){
+            if (data == 1) {
+                $('#btnCerrarModal').click();
+            }
+        })
+    });
+
+    $('#btngd').click(function(){
+        var nome = $('#nombre').val();
+        var fi = $('#fei').val();
+        var ff = $('#fef').val();
+
+        $.post("<?php echo base_url();?>Dashboard/gdevento",
+        {
+            nom: nome,
+            fecini:fi,
+            fecfin:ff,
+        },
+        function(data){
+            if (data == 1) {
+                $('#btnCerrarModal').click();
+            }
+        })
+    });
+
+
+
+
+
+
+
+
+    //PRODUCTOS; CLIENTES
     $(".btn-remove").on("click", function(e){
         e.preventDefault();
         var ruta = $(this).attr("href");

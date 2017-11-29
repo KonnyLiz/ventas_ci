@@ -37,8 +37,16 @@ class Campana extends CI_Controller {
 			'fecha_f' => $fechaf,
 			'estado' => "1"
 		);
+		$campaña = "Campaña ".$nombre." de ventas en curso"
+
+		$data1  = array(
+			'nombre' => $campaña,
+			'fecha_i' => $fechai,
+			'fecha_f' => $fechaf,
+		);
 
 		if ($this->Campana_model->save($data)) {
+			$this->Campana_model->save1($data1);
 			redirect(base_url()."mantenimiento/campana");
 		}
 		else{
