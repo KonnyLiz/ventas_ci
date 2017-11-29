@@ -37,7 +37,7 @@ class Campana extends CI_Controller {
 			'fecha_f' => $fechaf,
 			'estado' => "1"
 		);
-		$campaña = "Campaña ".$nombre." de ventas en curso"
+		$campaña = "Campaña ".$nombre." de ventas en curso";
 
 		$data1  = array(
 			'nombre' => $campaña,

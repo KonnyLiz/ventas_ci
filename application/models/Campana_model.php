@@ -22,5 +22,9 @@ class Campana_model extends CI_Model {
 		return $this->db->update("campanas",$data);
 	}
 
+	public function save1($data){
+		return $this->db->insert("eventos",$data);
+	}
+
 }
 

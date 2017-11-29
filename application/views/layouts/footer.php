@@ -6,7 +6,10 @@
             reserved.
         </footer>
     </div>
-    <!-- ./wrapper -->
+   
+
+    <!-- jQuery 3 -->
+
 <!-- jQuery 3 -->
     <script src='<?php echo base_url(); ?>assets/fullcalendar/lib/moment.min.js'></script>
 <script src='<?php echo base_url(); ?>assets/fullcalendar/lib/jquery.min.js'></script>
@@ -14,7 +17,7 @@
 <script src='<?php echo base_url(); ?>assets/fullcalendar/locale/es.js'></script> 
 
 
-    
+
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/application.js"></script>
     <!--Page Level JS-->
@@ -26,8 +29,30 @@
     <!-- ToDo List  -->
     <script src="<?php echo base_url(); ?>assets/plugins/todo/js/todos.js"></script>
     <!--Load these page level functions-->
+ <script src="<?php echo base_url();?>assets/plugins/dataTables/js/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url();?>assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
+    <!-- ./wrapper -->
     <script>
 $(document).ready(function () {
+
+    $('#example1').DataTable({
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "zeroRecords": "No se encontraron resultados en su busqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
+    });     
+
     var base_url= "<?php echo base_url();?>";
 
     //calendario
