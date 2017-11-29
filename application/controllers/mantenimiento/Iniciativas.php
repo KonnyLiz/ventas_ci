@@ -1,0 +1,87 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Iniciativas extends CI_Controller {
+
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("Iniciativas_model");
+		$this->load->model("Grupos_model");
+	}
+
+	public function index()
+	{
+		$data  = array(
+			
+			"iniciativa" => $this->Iniciativas_model->getIniciativas(),
+			"grupo" => $this->Grupos_model->getGrupos()  
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/iniciativas/list",$data);
+		$this->load->view("layouts/footer");
+
+	}
+
+	public function store(){
+		$nombre = $this->input->post("nombre");
+		$grupo = $this->input->post("grupo");
+		$contacto = $this->input->post("contacto");
+		
+
+		$data  = array(
+			'grupo' => $grupo,
+			'nombre' => $nombre,
+			'contacto' => $contacto,
+			'estado' => "1",
+			
+		);
+
+		if ($this->Iniciativas_model->save($data)) {
+			redirect(base_url()."mantenimiento/iniciativas");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/productos/add");
+		}
+	}
+
+	public function edit($id){
+		$data =array( 
+			"iniciativa" => $this->Iniciativas_model->getIniciativa($id),
+			"grupo" => $this->Grupos_model->getGrupos()
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/iniciativas/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+
+	public function update(){
+		$idiniciativa = $this->input->post("id_iniciativa");
+		$nombre = $this->input->post("nombre");
+		$grupo = $this->input->post("grupo");
+		$contacto = $this->input->post("contacto");
+		$data  = array( 
+			'nombre' => $nombre,
+			'grupo' => $grupo,
+			'contacto' => $contacto,
+			
+		);
+		if ($this->Iniciativas_model->update($idiniciativa,$data)) {
+			redirect(base_url()."mantenimiento/iniciativas");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/productos/edit/".$idproducto);
+		}
+	}
+	public function delete($id){
+		$data  = array(
+			'estado' => "0", 
+		);
+		$this->Iniciativas_model->update($id,$data);
+		echo "mantenimiento/iniciativas";
+	}
+
+}
