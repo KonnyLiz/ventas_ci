@@ -10,7 +10,7 @@
                             <li class="active">Campaña</li>
                         </ul>
                     </div>
-                        <h1 class="h1">Campaña</h1>
+                        <h1 class="h1">Puto el que lo lea jaja</h1>
                 </div>
                     
 <!-- Content Wrapper. Contains page content -->
@@ -23,7 +23,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h1 class="modal-title">Puto l que lo lea menos el que lo hizo</h1>
+        <h4 class="modal-title">Informacion de la Campaña</h4>
       </div>
       <div class="modal-body">
         
