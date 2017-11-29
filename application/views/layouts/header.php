@@ -34,7 +34,7 @@
                                 <a href="#"><i class="fa fa-user"></i>Perfil</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-calendar"></i>Calendario</a>
+                                <a href="<?php echo base_url(); ?>calendarios/index"><i class="fa fa-calendar"></i>Calendario</a>
                             </li>
                             <li>
                                 <a href="<?php echo base_url(); ?>auth/logout"><i class="fa fa-power-off"></i>Salir</a>

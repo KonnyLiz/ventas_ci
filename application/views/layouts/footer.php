@@ -36,7 +36,7 @@ $(document).ready(function () {
     var base_url= "<?php echo base_url();?>";
 
 //calendario
-    $.post('<?php echo base_url();?>Dashboard/getEventos',
+    $.post('<?php echo base_url();?>Calendarios/getEventos',
             function(data){
                 
                 $('#calendar').fullCalendar({
@@ -61,18 +61,14 @@ $(document).ready(function () {
                         if (!confirm("Esta seguro de cambiar la fecha?")) {
                             revertFunc();
                         }else{
-                            $.post("<?php echo base_url();?>Dashboard/updEvento",
+                            $.post("<?php echo base_url();?>Calendarios/updEvento",
                             {
                                 id:id,
                                 fecini:fi,
                                 fecfin:ff
                             },
                             function(data){
-                                if (data == 1) {
-                                    alert('Se cambio correctamente');
-                                }else{
-                                    alert('ERROR.');
-                                }
+                                 location.reload();
                             });
                         }
                     },
@@ -86,18 +82,14 @@ $(document).ready(function () {
                         if (!confirm("Esta seguro??")) {
                             revertFunc();
                         }else{
-                            $.post("<?php echo base_url();?>Dashboard/updEvento",
+                            $.post("<?php echo base_url();?>Calendarios/updEvento",
                             {
                                 id:id,
                                 fecini:fi,
                                 fecfin:ff
                             },
-                            function(data){
-                                if (data == 1) {
-                                    alert('Se actualizo correctamente');
-                                }else{
-                                    alert('ERROR.');
-                                }
+                            function(){
+                                location.reload();
                             });
                         }
                     },
@@ -123,12 +115,13 @@ $(document).ready(function () {
                                     "</div>");
 
                         element.find('.closeE').click(function(){
-                            $('#calendar').fullCalendar( 'removeEvents', event.id);
+                            
                                 var id = event.id;
-                                $.post("<?php echo base_url();?>Dashboard/deleteEvento",
+                                $.post("<?php echo base_url();?>Calendarios/deleteEvento",
                                 {
                                     id:id
                                 });
+                                $('#calendar').fullCalendar( 'removeEvents', event.id);
 
                         });
                     },
@@ -162,18 +155,17 @@ $(document).ready(function () {
         var ff = $('#ff').val();
         var ide = $('#mhdnIdEvento').val();
 
-        $.post("<?php echo base_url();?>Dashboard/updEvento2",
+        $.post("<?php echo base_url();?>Calendarios/updEvento2",
         {
             nom: nome,
             fecini:fi,
             fecfin:ff,
             id: ide
         },
-        function(data){
-            if (data == 1) {
-                $('#btnCerrarModal').click();
-            }
-        })
+        function(){
+            //location.reload();
+        });
+        location.reload();
     });
 
     $('#btngd').click(function(){
@@ -181,17 +173,16 @@ $(document).ready(function () {
         var fi = $('#fei').val();
         var ff = $('#fef').val();
 
-        $.post("<?php echo base_url();?>Dashboard/gdevento",
+        $.post("<?php echo base_url();?>Calendarios/gdevento",
         {
             nom: nome,
             fecini:fi,
             fecfin:ff,
         },
-        function(data){
-            if (data == 1) {
-                $('#btnCerrarModal').click();
-            }
-        })
+        function(){
+            //location.reload();
+        });
+        location.reload();
     });
 
 

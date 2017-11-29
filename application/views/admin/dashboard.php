@@ -1,17 +1,11 @@
 
          <section class="main-content-wrapper">
             <section id="main-content">
-            <h1 class="h1">Tu agenda de vendedor</h1>
+            <h1 class="h1">Dashboard</h1>
                 <div class="row">
                     <div class="col-md-12">
 
-                            <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="tab-wrapper tab-primary">
-                        <div id="calendar"></div>
-                        </div>
-                        </div>
-                        </div>
+                            
                         <!--breadcrumbs end -->
                        <div class="col-md-3 col-sm-6">
                        <a href="#">
