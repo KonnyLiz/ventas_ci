@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2017 a las 15:20:54
+-- Tiempo de generación: 29-11-2017 a las 19:41:35
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -177,6 +177,35 @@ INSERT INTO `detalle_venta` (`id`, `producto_id`, `venta_id`, `precio`, `cantida
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id_evento` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `fecha_i` datetime NOT NULL,
+  `fecha_f` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`id_evento`, `nombre`, `fecha_i`, `fecha_f`) VALUES
+(4, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'dic', '2017-12-01 00:00:00', '2017-12-01 00:00:00'),
+(7, 'dic3', '2017-12-03 00:00:00', '2017-12-03 00:00:00'),
+(8, 'nuevo', '2017-11-30 00:00:00', '2017-11-30 00:00:00'),
+(12, 'submit', '2017-11-20 00:00:00', '2017-11-22 00:00:00'),
+(13, 'wenas', '2017-11-10 00:00:00', '2017-11-13 00:00:00'),
+(15, 'true', '2017-11-13 00:00:00', '2017-11-15 00:00:00'),
+(16, 'reload', '2017-11-15 00:00:00', '2017-11-16 00:00:00'),
+(17, 'fuera', '2017-11-16 00:00:00', '2017-11-17 00:00:00'),
+(18, 'wenas45', '2017-11-15 00:00:00', '2017-11-22 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `grupo`
 --
 
@@ -284,16 +313,17 @@ CREATE TABLE `permisos` (
   `read` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `insert` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `update` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
-  `delete` varchar(40) COLLATE utf8_spanish_ci NOT NULL
+  `delete` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `permisos`
 --
 
-INSERT INTO `permisos` (`id`, `menu_id`, `rol_id`, `read`, `insert`, `update`, `delete`) VALUES
-(1, 2, 1, '1', '1', '1', '1'),
-(2, 1, 2, '1', '0', '0', '0');
+INSERT INTO `permisos` (`id`, `menu_id`, `rol_id`, `read`, `insert`, `update`, `delete`, `estado`) VALUES
+(12, 1, 2, '1', '0', '0', '0', 0),
+(13, 1, 2, '1', '0', '0', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -319,7 +349,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio_entrada`, `precio`, `precio_mayoreo`, `stock`, `categoria_id`, `estado`) VALUES
-(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 1),
+(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 0),
 (2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 492, 1, 0);
 
 -- --------------------------------------------------------
@@ -509,6 +539,12 @@ ALTER TABLE `detalle_venta`
   ADD KEY `fk_producto_detalle_idx` (`producto_id`);
 
 --
+-- Indices de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id_evento`);
+
+--
 -- Indices de la tabla `grupo`
 --
 ALTER TABLE `grupo`
@@ -634,6 +670,11 @@ ALTER TABLE `detalle_abastecer`
 ALTER TABLE `detalle_venta`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
@@ -657,7 +698,7 @@ ALTER TABLE `oportunidad`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
