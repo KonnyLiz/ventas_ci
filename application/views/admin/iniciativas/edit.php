@@ -38,9 +38,10 @@
                         <?php endif;?>
                         <form action="<?php echo base_url();?>mantenimiento/iniciativas/update" method="POST">
                             <input type="hidden" name="idproducto" value="<?php echo $iniciativa->id_iniciativa;?>">
-                            <div class="form-group">
-                                <label for="codigo">Codigo:</label>
-                                <input type="text" class="form-control" id="codigo" name="codigo" value="<?php echo $iniciativa->nombre?>">
+                            <div class="form-group <?php echo !empty(form_error("codigo"))? 'has-error':'' ?>">
+                                <label for="codigo">Nombre:</label>
+                                <input type="text" class="form-control" id="codigo" name="codigo" value="<?php echo !empty(form_error("codigo"))? set_value("codigo"):$iniciativa->nombre?>">
+                                <?php echo form_error("cadigo", "<span class='help-block'>", "</span>");?>
                             </div>
                             
                             <div class="form-group">

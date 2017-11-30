@@ -148,42 +148,44 @@
                                 <label for="codigo">Grupo:</label>
                                 <input type="text" class="form-control" id="grupo" name="" disabled="" >
                             </div>
-                            <div>
-                                <label for="codigo">Apellidos:</label>
-                                <input onblur="raro()" type="text" class="form-control" id="r2" name="r2">
-                            </div>
                             <!--<div class="form-group">
                                 <label for="codigo">Reunion:</label>
                                 <input type="date" class="form-control"  name="reunion" >
                             </div>-->
-
-                            <div class="form-group">
+                             <div class="form-group <?php echo !empty(form_error("r2"))? 'has-error':'' ?>">
+                                <label for="codigo">Apellido</label>
+                                <input  value="<?php echo set_value("r2")?>" type="text" class="form-control"  name="r2" >
+                                <?php echo form_error("r2", "<span class='help-block'>", "</span>");?>
+                            </div>
+                            <div class="form-group <?php echo !empty(form_error("r3"))? 'has-error':'' ?>">
                                 <label for="codigo">Telefono</label>
-                                <input onblur="raro2()" type="text" class="form-control"  name="r3" >
+                                <input  value="<?php echo set_value("r3")?>" type="text" class="form-control"  name="r3" >
+                                <?php echo form_error("r3", "<span class='help-block'>", "</span>");?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("r4"))? 'has-error':'' ?>">
                                 <label for="codigo">DUI</label>
-                                <input type="text" class="form-control"  name="r4" >
+                                <input value="<?php echo set_value("r4")?>" type="text" class="form-control"  name="r4" >
+                                <?php echo form_error("r4", "<span class='help-block'>", "</span>");?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("r5"))? 'has-error':'' ?>">
                                 <label for="codigo">NIT</label>
-                                <input type="text" class="form-control"  name="r5" >
+                                <input value="<?php echo set_value("r5")?>" type="text" class="form-control"  name="r5" >
+                                <?php echo form_error("r5", "<span class='help-block'>", "</span>");?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("r6"))? 'has-error':'' ?>">
                                 <label for="codigo">Dirección</label>
-                                <input type="text" class="form-control"  name="r6" >
+                                <input value="<?php echo set_value("r6")?>" type="text" class="form-control"  name="r6" >
+                                <?php echo form_error("r6", "<span class='help-block'>", "</span>");?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("r7"))? 'has-error':'' ?>">
                                 <label for="codigo">Registro</label>
-                                <input type="text" class="form-control"  name="r7" >
+                                <input  value="<?php echo set_value("r7")?>" type="text" class="form-control"  name="r7" >
+                                <?php echo form_error("r7", "<span class='help-block'>", "</span>");?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("r8"))? 'has-error':'' ?>">
                                 <label for="codigo">Empresa</label>
-                                <input type="text" class="form-control"  name="r8" >
-                            </div>
-                            <div class="form-group">
-                                <label for="codigo">Estado</label>
-                                <input type="text" class="form-control"  name="r9" >
+                                <input value="<?php echo set_value("r8")?>" type="text" class="form-control"  name="r8" >
+                                <?php echo form_error("r8", "<span class='help-block'>", "</span>");?>
                             </div>
                                 <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-flat">Guardar</button>
