@@ -99,7 +99,7 @@
                                 <?php endif;?>
                             </tbody>
                         </table>
-                        <a href="<?php echo base_url();?>pdfcontroller/usuarios" target="_blank">
+                        <a href="<?php echo base_url();?>pdfcontroller/vendedores" target="_blank">
                         <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte General</button>
                         </a>
                        </div>

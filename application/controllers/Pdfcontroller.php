@@ -109,6 +109,18 @@ class Pdfcontroller extends CI_Controller
  			$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
  			$this->mydompdf->stream("welcome.pdf", array("Attachment" => false));
  	}
+ 	function vendedores()
+	{
+			 $this->load->model('Pdf_model');
+ 			 $this->load->library('mydompdf');
+			$data['resulVentas'] = $this->Pdf_model->getPdfventas();
+ 			$html= $this->load->view('pdf/vendedores', $data, true);
+ 			$this->mydompdf->load_html($html);
+ 			$this->mydompdf->set_paper('A4','landscape');
+ 			$this->mydompdf->render();
+ 			$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+ 			$this->mydompdf->stream("welcome.pdf", array("Attachment" => false));
+ 	}
  	//Controlador del reporte de iniciativas
  	function iniciativa()
 	{

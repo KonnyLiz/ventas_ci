@@ -46,6 +46,7 @@ class Pdf_model extends CI_Model
    		$query = $this->db->get();
    		return $query->result();
  	}
+   
 
    function getPdfoportunidades()
    {

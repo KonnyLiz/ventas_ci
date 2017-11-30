@@ -57,13 +57,13 @@ private $permisos;
 			'telefono' => $telefono,
 			'email' => $email,
 			'username' => $username,
-			'password' => sha1($password),
+			'password' =>sha1($password),
 			'rol_id' => $rol,
 			'estado' => $estado
 		);
 
 		if ($this->Usuarios_model->save($data)) {
-			redirect(base_url()."mantenimiento/clientes");
+			redirect(base_url()."mantenimiento/usuarios");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
@@ -107,7 +107,6 @@ private $permisos;
 			'telefono' => $telefono,
 			'email' => $email,
 			'username' => $username,
-			'password' => $password,
 			'rol_id' => $rol,
 			'estado' => $estado
 		);

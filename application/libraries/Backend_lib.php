@@ -26,7 +26,7 @@
 			$permisos = $this->CI->Backend_model->getPermisos($infomenu->id,$this->CI->session->userdata("rol"));
 			//echo ($url);
 			//
-			
+			//print_r($permisos);
 			if($permisos->read == 0 ){
 				//echo "aqui si esta entrando verdad";
 				redirect(base_url()."dashboard"); 

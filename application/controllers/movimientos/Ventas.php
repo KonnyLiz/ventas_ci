@@ -2,9 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ventas extends CI_Controller {
-
+private $permisos;      
 	public function __construct(){
 		parent::__construct();
+		
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Ventas_model");
 		$this->load->model("Clientes_model");
 		$this->load->model("Productos_model");
@@ -12,6 +14,7 @@ class Ventas extends CI_Controller {
 
 	public function index(){
 		$data = array(
+			"permisos" => $this->permisos, 
 			'ventas' => $this->Ventas_model->getVentas(),
 		);
 
