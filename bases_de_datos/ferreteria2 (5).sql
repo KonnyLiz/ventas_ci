@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2017 a las 14:34:56
+-- Tiempo de generación: 01-12-2017 a las 00:15:44
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -42,7 +42,8 @@ CREATE TABLE `abastecer` (
 INSERT INTO `abastecer` (`id`, `fecha`, `total_abastecer`, `usuario_id`) VALUES
 (2, '2017-11-27', '250.33', 1),
 (3, '2017-11-28', '0.08', 1),
-(4, '2017-11-28', '0.08', 1);
+(4, '2017-11-28', '0.08', 1),
+(5, '2017-11-30', '24.00', 5);
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,8 @@ CREATE TABLE `campanas` (
 INSERT INTO `campanas` (`id`, `nombre`, `producto`, `fecha_i`, `fecha_f`, `estado`, `cantidad_a_vender`) VALUES
 (1, 'Navidad', 'clavos', '2017-11-20', '2017-11-21', 1, 0),
 (2, 'Semana Santa', '2', '2017-11-20', '2017-11-30', 1, 0),
-(3, 'Dia de los enamorados', 'clavos', '2018-02-01', '2018-02-15', 1, 0);
+(3, 'Dia de los enamorados', 'clavos', '2018-02-01', '2018-02-15', 1, 0),
+(4, 'llave', 'Llave inglesa', '2017-11-30', '2017-12-02', 1, 500);
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,9 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `grupo`, `nombres`, `apellidos`, `telefono`, `dui`, `nit`, `direccion`, `registro`, `empresa`, `estado`) VALUES
 (2, 1, 'kony', '', '08098', '90809', '66', 'sm', '', '', 1),
-(3, 0, 'Hugo', '', '098', '8778', '09809', 'hj', NULL, '', 1);
+(3, 0, 'Hugo', '', '098', '8778', '09809', 'hj', NULL, '', 1),
+(4, NULL, 'Edward', 'Hernandez', '908989', '09809090', '09809', 'Conchagua', 'ih', 'klk', 1),
+(5, NULL, 'ING', 'asksk7773', '36363', '73733838', '77594592', 'San ', '34', 'chilin', 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +150,8 @@ CREATE TABLE `detalle_abastecer` (
 INSERT INTO `detalle_abastecer` (`id`, `abastecer_id`, `producto_id`, `cantidad_abastecer`, `importe`) VALUES
 (3, 2, 1, 33, 0.33),
 (4, 2, 2, 200, 250),
-(5, 3, 1, 8, 0.08);
+(5, 3, 1, 8, 0.08),
+(6, 5, 3, 8, 24);
 
 -- --------------------------------------------------------
 
@@ -173,7 +178,10 @@ INSERT INTO `detalle_venta` (`id`, `producto_id`, `venta_id`, `precio`, `cantida
 (3, 1, 7, '0.05', '5', '0.25'),
 (4, 1, 8, '0.05', '4', '0.20'),
 (5, 2, 9, '3.00', '4', '12.00'),
-(6, 1, 10, '0.05', '5', '0.25');
+(6, 1, 10, '0.05', '5', '0.25'),
+(7, 3, 11, '5.0', '8', '40.00'),
+(8, 2, 11, '3.00', '9', '27.00'),
+(9, 6, 12, '20.0', '1', '20.00');
 
 -- --------------------------------------------------------
 
@@ -202,7 +210,8 @@ INSERT INTO `eventos` (`id_evento`, `nombre`, `fecha_i`, `fecha_f`) VALUES
 (15, 'true', '2017-11-13 00:00:00', '2017-11-15 00:00:00'),
 (16, 'reload', '2017-11-15 00:00:00', '2017-11-16 00:00:00'),
 (17, 'fuera', '2017-11-16 00:00:00', '2017-11-17 00:00:00'),
-(18, 'wenas45', '2017-11-15 00:00:00', '2017-11-22 00:00:00');
+(18, 'wenas45', '2017-11-15 00:00:00', '2017-11-22 00:00:00'),
+(19, 'Campaña llave de ventas en curso', '2017-11-30 00:00:00', '2017-12-02 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -244,7 +253,8 @@ CREATE TABLE `iniciativa` (
 
 INSERT INTO `iniciativa` (`id_iniciativa`, `grupo`, `nombre`, `contacto`, `estado`) VALUES
 (1, 1, 'Carlos Fermin Padilla Ferrufino', 'Redes', 1),
-(2, 3, 'Edward Hernandez', 'Pagina web', 1);
+(2, 3, 'Edward Hernandez', 'Pagina web', 1),
+(3, 1, 'Ing', 'Redes', 1);
 
 -- --------------------------------------------------------
 
@@ -270,12 +280,14 @@ INSERT INTO `menus` (`id`, `nombre`, `link`) VALUES
 (5, 'Iniciativas', 'mantenimiento/iniciativas'),
 (6, 'Oportunidades', 'mantenimiento/oportunidades'),
 (7, 'Clientes', 'mantenimiento/clientes'),
-(8, 'Usuarios', 'mantenimiento/Usuarios'),
+(8, 'Usuario', 'mantenimiento/Usuarios'),
 (9, 'Realizar Venta', 'movimientos/ventas/add'),
 (10, 'Registro de Ventas', 'movimientos/ventas'),
 (11, 'Reabastecer', 'movimientos/reabastecer/add'),
 (12, 'Reabastecimientos', 'movimientos/reabastecer'),
-(13, 'Vendedores', 'mantenimiento/Vendedores');
+(13, 'Vendedores', 'mantenimiento/Vendedores'),
+(14, 'Permisos', 'mantenimiento/permisos'),
+(15, 'Reclamos', 'mantenimiento/Reclamos');
 
 -- --------------------------------------------------------
 
@@ -334,17 +346,34 @@ CREATE TABLE `permisos` (
 --
 
 INSERT INTO `permisos` (`id`, `menu_id`, `rol_id`, `read`, `insert`, `update`, `delete`, `estado`) VALUES
-(16, 2, 1, '1', '1', '1', '1', 1),
-(19, 3, 1, '1', '1', '1', '1', 1),
-(20, 6, 1, '1', '0', '0', '1', 1),
-(21, 1, 1, '1', '0', '0', '0', 1),
-(22, 4, 1, '0', '1', '1', '1', 1),
-(23, 5, 1, '1', '1', '1', '1', 1),
-(24, 7, 1, '1', '1', '1', '1', 1),
-(25, 8, 1, '1', '1', '1', '1', 1),
-(26, 9, 3, '1', '1', '0', '0', 1),
-(27, 13, 1, '1', '1', '1', '1', 1),
-(28, 9, 1, '1', '1', '1', '0', 1);
+(1, 2, 1, '1', '1', '1', '1', 1),
+(2, 3, 1, '1', '1', '1', '1', 1),
+(3, 4, 1, '1', '1', '1', '1', 1),
+(4, 5, 1, '1', '1', '1', '1', 1),
+(5, 6, 1, '1', '1', '1', '1', 1),
+(6, 7, 1, '1', '1', '1', '1', 1),
+(7, 8, 1, '1', '1', '1', '1', 1),
+(8, 9, 1, '1', '1', '1', '1', 1),
+(9, 10, 1, '1', '1', '1', '1', 1),
+(10, 11, 1, '1', '1', '1', '1', 1),
+(11, 12, 1, '1', '1', '1', '1', 1),
+(12, 13, 1, '1', '1', '1', '1', 1),
+(13, 15, 1, '1', '1', '1', '1', 1),
+(14, 14, 1, '1', '1', '1', '1', 1),
+(15, 2, 3, '0', '0', '0', '0', 1),
+(16, 3, 3, '0', '0', '0', '0', 1),
+(17, 4, 3, '1', '1', '0', '0', 1),
+(20, 5, 3, '1', '1', '0', '0', 1),
+(21, 6, 3, '1', '1', '0', '0', 1),
+(22, 7, 3, '1', '1', '0', '0', 1),
+(23, 8, 3, '0', '0', '0', '0', 1),
+(24, 9, 3, '1', '1', '0', '0', 1),
+(25, 10, 3, '1', '1', '0', '0', 1),
+(26, 11, 3, '1', '1', '0', '0', 1),
+(27, 12, 3, '1', '1', '0', '0', 1),
+(28, 13, 3, '1', '0', '0', '0', 1),
+(29, 14, 3, '0', '0', '0', '0', 1),
+(30, 15, 3, '1', '1', '1', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -370,8 +399,12 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio_entrada`, `precio`, `precio_mayoreo`, `stock`, `categoria_id`, `estado`) VALUES
-(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 0),
-(2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 492, 1, 0);
+(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 1),
+(2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 483, 1, 1),
+(3, '555', 'Martillo', '', '3.0', '5.0', '4.0', 50, 1, 1),
+(4, '111', 'PAPA', '', '2.0', '5.0', '3.0', 15, 1, 1),
+(5, '465465', 'adsd', 'asdasdkasndñkjasndjnasdn', '2.0', '5.0', '3.0', 23, 1, 1),
+(6, '0029', 'CableUTP', 'Cable bonito', '10.0', '20.0', '15.0', 99, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -447,8 +480,8 @@ CREATE TABLE `tipo_comprobante` (
 --
 
 INSERT INTO `tipo_comprobante` (`id`, `nombre`, `cantidad`, `iva`, `serie`) VALUES
-(1, 'Factura', 7, 13, 1),
-(2, 'Ticket', 1, 13, 5);
+(1, 'Factura', 8, 13, 1),
+(2, 'Ticket', 2, 13, 5);
 
 -- --------------------------------------------------------
 
@@ -493,7 +526,8 @@ INSERT INTO `usuarios` (`id`, `grupo`, `nombres`, `apellidos`, `dui`, `nit`, `te
 (3, 1, 'fabiola', 'garcia', '65415161', '1+56165161', '77564+498', 'fabu@hotmail.com', 'fab', NULL, 1, 0),
 (4, 2, 'konny', 'amaya', '7897', '54656', '778888999', 'sama', 'liz', NULL, 3, 0),
 (5, 1, 'edw', 'her', '889', '54657', '7878', '7878', 'baioz', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1),
-(6, 1, 'gustavo', 'rojas', '8989', '8889', '2648', 'rojas@jah', 'rojas', 'fc6fea5b0c058716683a5ec0cf63833ba7a72bca', 3, 1);
+(6, 1, 'gustavo', 'rojas', '8989', '8889', '2648', 'rojas@jah', 'rojas', 'fc6fea5b0c058716683a5ec0cf63833ba7a72bca', 3, 1),
+(7, 1, 'Ligia', 'Astrid', '7897', '456789', '789456232', 'astrid@hotmail.com', 'ingeniera', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -521,7 +555,9 @@ CREATE TABLE `ventas` (
 
 INSERT INTO `ventas` (`id`, `fecha`, `serie`, `subtotal`, `iva`, `descuento`, `total`, `cliente_id`, `usuario_id`, `num_documento`, `tipo_comprobante_id`) VALUES
 (9, '2017-11-26', '1', '12', '1.56', '0.00', '13.56', 3, 1, '000006', 1),
-(10, '2017-11-28', '1', '0.25', '0.03', '0.00', '0.28', 2, 1, '000007', 1);
+(10, '2017-11-28', '1', '0.25', '0.03', '0.00', '0.28', 2, 1, '000007', 1),
+(11, NULL, '1', '67', '8.71', '0.00', '75.71', 4, 1, '000008', 1),
+(12, NULL, '5', '20', '2.60', '0.00', '22.60', 5, 1, '000002', 2);
 
 --
 -- Índices para tablas volcadas
@@ -681,12 +717,12 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `abastecer`
 --
 ALTER TABLE `abastecer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `campanas`
 --
 ALTER TABLE `campanas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
@@ -696,22 +732,22 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `detalle_abastecer`
 --
 ALTER TABLE `detalle_abastecer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
@@ -721,12 +757,12 @@ ALTER TABLE `grupo`
 -- AUTO_INCREMENT de la tabla `iniciativa`
 --
 ALTER TABLE `iniciativa`
-  MODIFY `id_iniciativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_iniciativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `oportunidad`
 --
@@ -736,12 +772,12 @@ ALTER TABLE `oportunidad`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `reclamos`
 --
@@ -771,12 +807,12 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Restricciones para tablas volcadas
 --
