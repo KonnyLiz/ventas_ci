@@ -23,8 +23,10 @@
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#home1" data-toggle="tab">Lista</a>
                                         </li>
+                                        <?php if($permisos->insert == 1):?>
                                         <li><a href="#profile1" data-toggle="tab">Nuevo</a>
                                         </li>
+                                    <?php endif?>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home1">
@@ -51,8 +53,20 @@
                                         <td><?php echo $categoria->descripcion;?></td>
                                         <td>
                                         <div class="btn-group">
-                                            <a href="<?php echo base_url()?>mantenimiento/categorias/edit/<?php echo $categoria->id;?>" class="btn btn-info"><span class="fa fa-pencil"></span></a>
-                                            <a href="<?php echo base_url();?>mantenimiento/categorias/delete/<?php echo $categoria->id;?>" class="btn btn-danger"><span class="fa fa-times" style="color: #fff"></span></a>
+
+                                            <?php if($permisos->update == 1):?>
+
+                                                <a href="<?php echo base_url()?>mantenimiento/categorias/edit/<?php echo $categoria->id;?>" class="btn btn-info"><span class="fa fa-pencil"></span></a>
+                                            <?php endif?>
+                    
+                                            <?php if($permisos->delete == 1):?>
+
+                                                <a href="<?php echo base_url();?>mantenimiento/categorias/delete/<?php echo $categoria->id;?>" class="btn btn-danger"><span class="fa fa-times" style="color: #fff"></span></a>
+                                            <?php endif?>
+                    
+
+
+                                            
                                         </div>
                                         </td>
                                     </tr>

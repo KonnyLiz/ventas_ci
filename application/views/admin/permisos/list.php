@@ -206,7 +206,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label for="read">Leer</label>
+                                <label for="read">Eliminar</label>
                                 <label class="radio-inline">
                                     <input type="radio" name="delete" value="1" checked="checked">Si
                                 </label>

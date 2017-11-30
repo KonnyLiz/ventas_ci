@@ -95,10 +95,12 @@ class Permisos extends CI_Controller {
 		}
 	}
 	public function delete($id){
-		$data  = array(
+		/*$data  = array(
 			'estado' => "0", 
 		);
 		$this->Permisos_model->update($id,$data);
+		echo "mantenimiento/permisos";*/
+		$this->Permisos_model->delete($id);
 		echo "mantenimiento/permisos";
 	}
 }

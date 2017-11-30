@@ -29,4 +29,8 @@ class Permisos_model extends CI_Model {
 		$this->db->where("id",$id);
 		return $this->db->update("permisos",$data);
 	}
+	public function delete($id){
+		$this->db->where("id",$id);
+		return $this->db->delete ("permisos");
+	}
 }
