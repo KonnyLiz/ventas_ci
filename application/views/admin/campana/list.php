@@ -64,6 +64,7 @@
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Producto</th>
+                                    <th>Cantidad a vender</th>
                                     <th>Fecha de inicio</th>
                                     <th>Fecha de finalizacion</th>
                                     <th>Acciones</th>
@@ -76,9 +77,10 @@
                                             <td><?php echo $campana->id;?></td>
                                             <td><?php echo $campana->nombre;?></td>
                                             <td><?php echo $campana->producto;?></td>
+                                            <td><?php echo $campana->cantidad_a_vender;?></td>
                                             <td><?php echo $campana->fecha_i;?></td>
                                             <td><?php echo $campana->fecha_f;?></td>
-                                            <?php $datacampana = $campana->id."*".$campana->nombre."*".$campana->producto."*".$campana->fecha_i."*".$campana->fecha_f;?>
+                                            <?php $datacampana = $campana->id."*".$campana->nombre."*".$campana->producto."*".$campana->cantidad_a_vender."*".$campana->fecha_i."*".$campana->fecha_f;?>
                                             <td>
                                                 <div class="btn-group">
                                                     
@@ -124,6 +126,11 @@
                                         <option value="<?php echo $producto->nombre?>"><?php echo $producto->nombre;?></option>
                                     <?php endforeach;?>
                                 </select>
+                            </div>
+                            <div class="form-group <?php echo !empty(form_error("cantidad_a_vender"))? 'has-error':'' ?>">
+                                <label for="cantidad_a_vender">Cantidad de Producto a Vender:</label>
+                                <input value="<?php echo set_value("cantidad_a_vender")?>" type="text" class="form-control" id="cantidad_a_vender" name="cantidad_a_vender">
+                                <?php echo form_error("cantidad_a_vender", "<span class='help-block'>", "</span>");?>
                             </div>
                              <div class="form-group <?php echo !empty(form_error("fecha_i"))? 'has-error':'' ?>">
                                 <label for="precio">Fecha de inicio:</label>

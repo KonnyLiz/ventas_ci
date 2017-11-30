@@ -27,10 +27,12 @@ class Campana extends CI_Controller {
 	public function store(){
 		$nombre = $this->input->post("nombre");
 		$producto = $this->input->post("producto");
+		$cantidad = $this->input->post("cantidad_a_vender");
 		$fechai = $this->input->post("fecha_i");
 		$fechaf = $this->input->post("fecha_f");
 
 		$this->form_validation->set_rules("nombre", "Nombre", "alpha_numeric|required");
+		$this->form_validation->set_rules("cantidad_a_vender", "Cantidad", "integer|is_natural_no_zero|required");
 		$this->form_validation->set_rules("fecha_i", "Fecha inicio", "required");
 		$this->form_validation->set_rules("fecha_f", "Fecha fin", "required");
 
@@ -38,6 +40,7 @@ class Campana extends CI_Controller {
 			$data  = array(
 				'nombre' => $nombre,
 				'producto' => $producto,
+				'cantidad_a_vender' => $cantidad,
 				'fecha_i' => $fechai,
 				'fecha_f' => $fechaf,
 				'estado' => "1"
@@ -80,10 +83,12 @@ class Campana extends CI_Controller {
 		$id = $this->input->post("idCampana");
 		$nombre = $this->input->post("nombre");
 		$producto = $this->input->post("producto");
+		$cantidad = $this->input->post("cantidad_a_vender");
 		$fechai = $this->input->post("fecha_i");
 		$fechaf = $this->input->post("fecha_f");
 
 		$this->form_validation->set_rules("nombre", "Nombre", "alpha_numeric|required");
+		$this->form_validation->set_rules("cantidad_a_vender", "Cantidad", "integer|is_natural_no_zero|required");
 		$this->form_validation->set_rules("fecha_i", "Fecha inicio", "required");
 		$this->form_validation->set_rules("fecha_f", "Fecha fin", "required");
 
@@ -91,6 +96,7 @@ class Campana extends CI_Controller {
 			$data  = array(
 				'nombre' => $nombre,
 				'producto' => $producto,
+				'cantidad_a_vender' => $cantidad,
 				'fecha_i' => $fechai,
 				'fecha_f' => $fechaf,
 				'estado' => "1"

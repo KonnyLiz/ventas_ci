@@ -59,8 +59,14 @@
                                         <?php endif;?>
                                     <?php endforeach;?>
                                 </select>
-                            </div>
-
+                            </div>  
+                            <div class="form-group <?php echo !empty(form_error("cantidad_a_vender"))? 'has-error':'' ?>">
+                                        <label class="col-sm-3 control-label">Cantidad de Producto a Vender</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="stock" name="cantidad_a_vender" value="<?php echo !empty(form_error("cantidad_a_vender"))? set_value("cantidad_a_vender"):$campanas->cantidad_a_vender?>">
+                                            <?php echo form_error("cantidad_a_vender", "<span class='help-block'>", "</span>");?>
+                                        </div>
+                                    </div>
                                         <div class="form-group <?php echo !empty(form_error("fecha_i"))? 'has-error':'' ?>">
                                         <label class="col-sm-3 control-label">Fecha de inicio</label>
                                         <div class="col-sm-6">
