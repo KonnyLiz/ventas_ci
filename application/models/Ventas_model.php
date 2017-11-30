@@ -76,4 +76,8 @@ class Ventas_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados->result();
 	}
+
+	public function save_Cliente($data){
+		return $this->db->insert("clientes",$data);
+	}
 }

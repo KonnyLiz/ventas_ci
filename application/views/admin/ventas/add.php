@@ -27,8 +27,13 @@
         <div class="box box-solid">
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        
+                    
+                        <div class="col-md-3" style="padding-bottom: 12px">
+                                    <label for="">Fecha:</label>
+                                    <input type="date" class="form-control" name="fecha" required>
+                                </div>
+                        <div class="col-md-12">
+
                         <form action="<?php echo base_url();?>movimientos/ventas/store" method="POST" class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-md-3">
@@ -62,12 +67,15 @@
                                         <span class="input-group-btn">
                                             <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-default" ><span class="fa fa-search"></span> Buscar</button>
                                         </span>
+                                        <span class="input-group-btn">
+                                             <label for="">&nbsp;</label>
+                                        </span>
+                                        <span class="input-group-btn">
+                                            <button id="btn-agregar-Cliente" type="button" class="btn btn-success btn-flat btn-block" data-toggle="modal" data-target="#modal-agregarCliente"><span class="fa fa-plus"></span> Agregar Cliente</button>
+                                        </span>
                                     </div><!-- /input-group -->
                                 </div> 
-                                <div class="col-md-3">
-                                    <label for="">Fecha:</label>
-                                    <input type="date" class="form-control" name="fecha" required>
-                                </div>
+                                
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
@@ -183,4 +191,61 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+<!-- /.modal agregar cliente-->
+<div class="modal fade" id="modal-agregarCliente">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Lita de Clientes</h4>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo base_url();?>movimientos/ventas/save_Cliente" method="POST">
+                    
+                            <div class="form-group">
+                                <label for="categoria">Nombre:</label> 
+                            <input class="form-control" id="nombre2" name="nombre2" >
+                            <div>
+                                <label for="codigo">Apellidos:</label>
+                                <input type="text" class="form-control" id="r2" name="r2">
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Telefono</label>
+                                <input type="text" class="form-control"  name="r3" >
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">DUI</label>
+                                <input type="text" class="form-control"  name="r4" >
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">NIT</label>
+                                <input type="text" class="form-control"  name="r5" >
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Dirección</label>
+                                <input type="text" class="form-control"  name="r6" >
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Registro</label>
+                                <input type="text" class="form-control"  name="r7" >
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Empresa</label>
+                                <input type="text" class="form-control"  name="r8" >
+                            </div>
+                                <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-flat">Guardar</button>
+                            </div>
+                            
+                        </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -

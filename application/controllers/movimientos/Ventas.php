@@ -121,4 +121,39 @@ class Ventas extends CI_Controller {
 		);
 		$this->load->view("admin/ventas/view", $data);
 	}
+
+	public function save_Cliente(){
+		$nombres = $this->input->post("nombre2");
+		$grupo  =  null;
+		$apellidos = $this->input->post("r2");
+		$telefono = $this->input->post("r3");
+		$dui = $this->input->post("r4");
+		$nit = $this->input->post("r5");
+		$direccion = $this->input->post("r6");
+		$registro = $this->input->post("r7");
+		$empresa = $this->input->post("r8");
+		$estado = 1;
+
+
+		$data  = array(
+			'grupo' => $grupo, 
+			'nombres' => $nombres, 
+			'apellidos' => $apellidos,
+			'telefono' => $telefono,
+			'dui' => $dui,
+			'nit' => $nit,
+			'direccion' => $direccion,
+			'registro' => $registro,
+			'empresa' => $empresa,
+			'estado' => $estado
+		);
+
+		if ($this->Ventas_model->save_Cliente($data)) {
+			redirect(base_url()."movimientos/ventas/add");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."movimientos/ventas/add");
+		}
+	}
 }
