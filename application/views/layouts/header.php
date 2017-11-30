@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<title>Ferreteria xyz</title>
    <?php
     require_once('flyweit.php');
    ?>
@@ -10,7 +11,7 @@
                 <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo"><span>Space</span>Lab</a>
+                <a href="index.html" class="logo"><span>Ferreteria</span></a>
             </div>
             <!--logo end-->
             <div class="toggle-navigation toggle-left">

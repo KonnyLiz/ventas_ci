@@ -36,11 +36,14 @@
                                     <?php endif;?>
                                 <form class="form-horizontal form-border" action="<?php echo base_url();?>mantenimiento/categorias/update" method="POST">
                                 <input type="hidden" value="<?php echo $categoria->id;?>" name="idCategoria">
-                                    <div class="form-group">
+                                    
+                                    <div class="form-group" >
                                         <label class="col-sm-3 control-label">Nombre</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" placeholder="Nombre de la categoria" id="nombre" name="nombre" value="<?php echo $categoria->nombre?>">
+                                        <div class="col-sm-6 <?php echo !empty(form_error("nombre"))? 'has-error':'' ?> ">
+                                            <input type="text" class="form-control" placeholder="Nombre de la categoria" id="nombre" name="nombre" value="<?php echo !empty(form_error("nombre"))? set_value("nombre"):$categoria->nombre;?>">
+                                            <?php echo form_error("nombre", "<span class='help-block'>", "</span>");?>
                                         </div>
+
                                         </div>
                                         <div class="form-group">
                                         <label class="col-sm-3 control-label">Descripcion</label>

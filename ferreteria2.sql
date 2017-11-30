@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2017 a las 19:41:35
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Tiempo de generación: 30-11-2017 a las 07:29:25
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -54,6 +52,7 @@ CREATE TABLE `campanas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `producto` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `cantidad_a_vender` int(11) DEFAULT NULL,
   `fecha_i` date NOT NULL,
   `fecha_f` date NOT NULL,
   `estado` tinyint(1) NOT NULL
@@ -63,10 +62,10 @@ CREATE TABLE `campanas` (
 -- Volcado de datos para la tabla `campanas`
 --
 
-INSERT INTO `campanas` (`id`, `nombre`, `producto`, `fecha_i`, `fecha_f`, `estado`) VALUES
-(1, 'Navidad', 'clavos', '2017-11-20', '2017-11-21', 1),
-(2, 'Semana Santa', '2', '2017-11-20', '2017-11-30', 1),
-(3, 'Dia de los enamorados', 'clavos', '2018-02-01', '2018-02-15', 1);
+INSERT INTO `campanas` (`id`, `nombre`, `producto`, `cantidad_a_vender`, `fecha_i`, `fecha_f`, `estado`) VALUES
+(1, 'Navidad', 'clavos', 5, '2017-11-21', '2017-11-30', 1),
+(2, 'Semana Santa', '2', NULL, '2017-11-20', '2017-11-30', 1),
+(3, 'Dia de los enamorados', 'clavos', NULL, '2018-02-01', '2018-02-15', 1);
 
 -- --------------------------------------------------------
 
@@ -349,8 +348,29 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio_entrada`, `precio`, `precio_mayoreo`, `stock`, `categoria_id`, `estado`) VALUES
-(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 0),
-(2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 492, 1, 0);
+(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 1),
+(2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 492, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reclamos`
+--
+
+CREATE TABLE `reclamos` (
+  `id` int(11) NOT NULL,
+  `vendedor` varchar(150) NOT NULL,
+  `producto` varchar(45) NOT NULL,
+  `reclamo` varchar(200) NOT NULL,
+  `estado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `reclamos`
+--
+
+INSERT INTO `reclamos` (`id`, `vendedor`, `producto`, `reclamo`, `estado`) VALUES
+(1, 'fabiola', 'clavos', 'bueno', 1);
 
 -- --------------------------------------------------------
 
@@ -591,6 +611,12 @@ ALTER TABLE `productos`
   ADD KEY `fk_categoria_producto_idx` (`categoria_id`);
 
 --
+-- Indices de la tabla `reclamos`
+--
+ALTER TABLE `reclamos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -705,6 +731,11 @@ ALTER TABLE `permisos`
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `reclamos`
+--
+ALTER TABLE `reclamos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -796,7 +827,6 @@ ALTER TABLE `ventas`
   ADD CONSTRAINT `fk_cliente_venta` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuario_venta` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`tipo_comprobante_id`) REFERENCES `tipo_comprobante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
