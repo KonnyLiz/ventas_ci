@@ -36,7 +36,6 @@
                             <table id="example1" class="table table-striped table-bordered" >
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
                                     <th>Accion</th>
@@ -48,7 +47,6 @@
                                 <?php  foreach($categorias as $categoria):?>
                                 
                                     <tr>
-                                        <td><?php echo $categoria->id;?></td>
                                         <td><?php echo $categoria->nombre;?></td>
                                         <td><?php echo $categoria->descripcion;?></td>
                                         <td>

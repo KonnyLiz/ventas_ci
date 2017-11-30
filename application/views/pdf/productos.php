@@ -13,7 +13,7 @@
               </td>
               <td id="header_texto">
                   <div>Ferreteria XYZ</div>
-                  <div>Reporte de Campañas</div>
+                  <div>Reporte de Productos</div>
               </td>
               <td id="header_logo">
               </td>
@@ -21,7 +21,7 @@
       </table>
   </header>
   <footer>
-      <div id="footer_texto">Reporte de Campañas</div>
+      <div id="footer_texto">Reporte de Productos</div>
   </footer>
 
   <table border="1" id="table_info">

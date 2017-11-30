@@ -13,7 +13,7 @@
               </td>
               <td id="header_texto">
                   <div>Ferreteria XYZ</div>
-                  <div>Reporte de Campañas</div>
+                  <div>Reporte de Ventas</div>
               </td>
               <td id="header_logo">
               </td>
@@ -21,13 +21,11 @@
       </table>
   </header>
   <footer>
-      <div id="footer_texto">Reporte de Campañas</div>
+      <div id="footer_texto">Reporte de Ventas</div>
   </footer>
-
   <table border="1" id="table_info">
        <thead>
            <tr>
-               <th>#</th>
                <th>Cliente</th>
                <th>Fecha</th>
                <th>Vendedor</th>
@@ -38,16 +36,27 @@
            </tr>
        </thead>
        <tbody>
-          <?php foreach ($resulVentas as $clientes) { ?>
+          <?php foreach ($resulVentas as $venta) { ?>
             <tr>
-                <td><?php echo $clientes->id;?></td>
-                <td><!--Nombre cliente--></td>
-                <td><?php echo $clientes->fecha;?></td>
-                <td><!--Nombre vendedor--></td>
-                <td><?php echo $clientes->subtotal;?></td>
-                <td><?php echo $clientes->iva;?></td>
-                <td><?php echo $clientes->descuento;?></td>
-                <td><?php echo $clientes->total;?></td>
+                <td><?php $Cli_id = $venta->cliente_id;
+                    $resulCli= $this->Pdf_model->getPdfclient($Cli_id);
+                foreach ($resulCli as $cli) 
+                {
+                   echo $cli->nombres;
+                } 
+                ?></td>
+                <td><?php echo $venta->fecha;?></td>
+                <td><?php $Usu_id = $venta->usuario_id;
+                    $resulUsu= $this->Pdf_model->getPdfusu1($Usu_id);
+                foreach ($resulUsu as $usu) 
+                {
+                   echo $usu->nombres;
+                } 
+                ?></td>
+                <td><?php echo $venta->subtotal;?></td>
+                <td><?php echo $venta->iva;?></td>
+                <td><?php echo $venta->descuento;?></td>
+                <td><?php echo $venta->total;?></td>
             </tr>
           <?php  }?>
        </tbody>
