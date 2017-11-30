@@ -2,9 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reclamos extends CI_Controller {
+private $permisos;                              
 
+                 
 	public function __construct(){
 		parent::__construct();
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Reclamos_model");
 		$this->load->model("Productos_model");
 		$this->load->model("Usuarios_model");
@@ -13,6 +16,7 @@ class Reclamos extends CI_Controller {
 	public function index()
 	{
 		$data  = array(
+			"permisos" => $this->permisos, 
 			'reclamo' => $this->Reclamos_model->getReclamos(),
 			'producto' => $this->Productos_model->getProductos(),
 			'usuario' => $this->Usuarios_model->getUsuarios(),

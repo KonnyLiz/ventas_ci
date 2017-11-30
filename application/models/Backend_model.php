@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function getPermisos($menu,$rol){
 			$this->db->where("menu_id",$menu);
 			$this->db->where("rol_id",$rol);
-			$this->db->get("permisos");
+			//$this->db->get("permisos");
 			$resultado = $this->db->get("permisos");
 			return $resultado->row(); 
 		}

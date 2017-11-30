@@ -2,9 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Iniciativas extends CI_Controller {
+private $permisos;                              
 
+                
 	public function __construct(){
 		parent::__construct();
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Iniciativas_model");
 		$this->load->model("Grupos_model");
 	}
@@ -12,7 +15,7 @@ class Iniciativas extends CI_Controller {
 	public function index()
 	{
 		$data  = array(
-			
+			"permisos" => $this->permisos,  
 			"iniciativa" => $this->Iniciativas_model->getIniciativas(),
 			"grupo" => $this->Grupos_model->getGrupos()  
 		);

@@ -22,17 +22,20 @@
 			} 
 
 			$infomenu = $this->CI->Backend_model->getID($url);
+			//print_r($infomenu->id);
 			$permisos = $this->CI->Backend_model->getPermisos($infomenu->id,$this->CI->session->userdata("rol"));
-			//echo ($permisos->read);
-			//print_r(expression);
+			//echo ($url);
+			//
+			
 			if($permisos->read == 0 ){
 				//echo "aqui si esta entrando verdad";
-				redirect(base_url().$permisos); 
+				redirect(base_url()."dashboard"); 
 			}else {
 				# code...
 				//redirect(base_url()."dashboard");
 				return $permisos;
 			}
+
 
 		}
 	}
