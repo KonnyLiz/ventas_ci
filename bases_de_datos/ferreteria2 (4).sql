@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2017 a las 05:04:55
+-- Tiempo de generación: 30-11-2017 a las 14:34:56
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -274,7 +274,8 @@ INSERT INTO `menus` (`id`, `nombre`, `link`) VALUES
 (9, 'Realizar Venta', 'movimientos/ventas/add'),
 (10, 'Registro de Ventas', 'movimientos/ventas'),
 (11, 'Reabastecer', 'movimientos/reabastecer/add'),
-(12, 'Reabastecimientos', 'movimientos/reabastecer');
+(12, 'Reabastecimientos', 'movimientos/reabastecer'),
+(13, 'Vendedores', 'mantenimiento/Vendedores');
 
 -- --------------------------------------------------------
 
@@ -334,7 +335,16 @@ CREATE TABLE `permisos` (
 
 INSERT INTO `permisos` (`id`, `menu_id`, `rol_id`, `read`, `insert`, `update`, `delete`, `estado`) VALUES
 (16, 2, 1, '1', '1', '1', '1', 1),
-(19, 3, 1, '0', '1', '1', '1', 1);
+(19, 3, 1, '1', '1', '1', '1', 1),
+(20, 6, 1, '1', '0', '0', '1', 1),
+(21, 1, 1, '1', '0', '0', '0', 1),
+(22, 4, 1, '0', '1', '1', '1', 1),
+(23, 5, 1, '1', '1', '1', '1', 1),
+(24, 7, 1, '1', '1', '1', '1', 1),
+(25, 8, 1, '1', '1', '1', '1', 1),
+(26, 9, 3, '1', '1', '0', '0', 1),
+(27, 13, 1, '1', '1', '1', '1', 1),
+(28, 9, 1, '1', '1', '1', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -478,9 +488,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `grupo`, `nombres`, `apellidos`, `dui`, `nit`, `telefono`, `email`, `username`, `password`, `rol_id`, `estado`) VALUES
-(1, 2, 'Carlos Ferminnnn', 'Padilla Ferrufino', '05431598-6', '1217-151096-102-6', '61099440', 'email@yo.com', 'Padillon', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1),
-(2, 1, 'edward', 'her', '789987', '87879', '77594592', 'baoionz_hg@hotmail.com', 'baionz', 'admin', 1, 1),
-(3, 1, 'fabiola', 'garcia', '65415161', '1+56165161', '77564+498', 'fabu@hotmail.com', 'fab', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1);
+(1, 1, 'Carlos Ferminnnn', 'Padilla Ferrufino', '05431598-6', '1217-151096-102-6', '61099440', 'email@yo.com', 'Padillon', '12', 1, 0),
+(2, 1, 'edward', 'her', '789987', '87879', '77594592', 'baoionz_hg@hotmail.com', 'baionz', NULL, 1, 0),
+(3, 1, 'fabiola', 'garcia', '65415161', '1+56165161', '77564+498', 'fabu@hotmail.com', 'fab', NULL, 1, 0),
+(4, 2, 'konny', 'amaya', '7897', '54656', '778888999', 'sama', 'liz', NULL, 3, 0),
+(5, 1, 'edw', 'her', '889', '54657', '7878', '7878', 'baioz', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1),
+(6, 1, 'gustavo', 'rojas', '8989', '8889', '2648', 'rojas@jah', 'rojas', 'fc6fea5b0c058716683a5ec0cf63833ba7a72bca', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -507,12 +520,6 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `fecha`, `serie`, `subtotal`, `iva`, `descuento`, `total`, `cliente_id`, `usuario_id`, `num_documento`, `tipo_comprobante_id`) VALUES
-(1, '2017-11-26', '1', '15.9', NULL, '0.00', '17.97', 2, NULL, '000001', 1),
-(2, '2017-11-26', '1', '0.25', '0.03', '0.00', '0.28', 2, NULL, '000002', 1),
-(3, '2017-11-26', '5', '9', '1.17', '0.00', '10.17', 3, NULL, '000001', 2),
-(5, '2017-11-26', '1', '3', '0.39', '0.00', '3.39', 3, NULL, '000003', 1),
-(7, '2017-11-26', '1', '0.25', '0.03', '0.00', '0.28', 2, NULL, '000004', 1),
-(8, '2017-11-26', '1', '0.2', '0.03', '0.00', '0.23', 3, NULL, '000005', 1),
 (9, '2017-11-26', '1', '12', '1.56', '0.00', '13.56', 3, 1, '000006', 1),
 (10, '2017-11-28', '1', '0.25', '0.03', '0.00', '0.28', 2, 1, '000007', 1);
 
@@ -719,7 +726,7 @@ ALTER TABLE `iniciativa`
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `oportunidad`
 --
@@ -729,7 +736,7 @@ ALTER TABLE `oportunidad`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
@@ -764,7 +771,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
