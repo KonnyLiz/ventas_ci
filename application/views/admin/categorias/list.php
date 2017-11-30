@@ -78,10 +78,11 @@
                                            <div class="panel-body">
                                 <form class="form-horizontal form-border" action="<?php echo base_url();?>mantenimiento/categorias/store" method="POST">
                                 
-                                    <div class="form-group">
+                                    <div class="form-group <?php echo !empty(form_error("nombre"))? 'has-error':'' ?> " >
                                         <label class="col-sm-3 control-label">Nombre</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" placeholder="Nombre de la categoria" name="nombre">
+                                            <input value="<?php echo set_value("nombre")?>" type="text" class="form-control" placeholder="Nombre de la categoria" name="nombre">
+                                            <?php echo form_error("nombre", "<span class='help-block'>", "</span>");?>
                                         </div>
                                         </div>
                                         <div class="form-group">

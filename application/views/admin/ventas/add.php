@@ -7,7 +7,7 @@
                         <ul class="breadcrumb">
                             <li><a href="#">Dashboard</a>
                             </li>
-                            <li>Ventas</li>
+                            <li>Ventas </li>
                             <li class="active">Agregar Venta</li>
                         </ul>
 
