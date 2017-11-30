@@ -34,25 +34,38 @@ class Productos extends CI_Controller {
 		$stock = $this->input->post("stock");
 		$categoria = $this->input->post("categoria");
 
-		$data  = array(
-			'codigo' => $codigo, 
-			'nombre' => $nombre,
-			'descripcion' => $descripcion,
-			'precio_entrada' => $precio_e,
-			'precio' => $precio,
-			'precio_mayoreo' => $precio_m,
-			'stock' => $stock,
-			'categoria_id' => $categoria,
-			'estado' => "1"
-		);
+		$this->form_validation->set_rules("codigo", "Codigo", "integer|is_natural_no_zero|required|is_unique[productos.codigo]");
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha|required|is_unique[productos.nombre]");
+		$this->form_validation->set_rules("precio_e", "Entrada", "decimal|required");
+		$this->form_validation->set_rules("precio", "Precio", "decimal|required");
+		$this->form_validation->set_rules("precio_m", "Mayoreo", "decimal|required");
+		$this->form_validation->set_rules("stock", "Stock", "is_natural_no_zero|integer|required");
 
-		if ($this->Productos_model->save($data)) {
-			redirect(base_url()."mantenimiento/productos");
+		if ($this->form_validation->run()){
+			$data  = array(
+				'codigo' => $codigo, 
+				'nombre' => $nombre,
+				'descripcion' => $descripcion,
+				'precio_entrada' => $precio_e,
+				'precio' => $precio,
+				'precio_mayoreo' => $precio_m,
+				'stock' => $stock,
+				'categoria_id' => $categoria,
+				'estado' => "1"
+			);
+
+			if ($this->Productos_model->save($data)) {
+				redirect(base_url()."mantenimiento/productos");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."mantenimiento/productos/add");
+			}
+		}else {
+			$this->index();
 		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/productos/add");
-		}
+
+		
 	}
 
 	public function edit($id){
@@ -76,23 +89,42 @@ class Productos extends CI_Controller {
 		$precio_m = $this->input->post("precio_m");
 		$stock = $this->input->post("stock");
 		$categoria = $this->input->post("categoria");
-		$data  = array(
-			'codigo' => $codigo, 
-			'nombre' => $nombre,
-			'descripcion' => $descripcion,
-			'precio_entrada' => $precio_e,
-			'precio' => $precio,
-			'precio_mayoreo' => $precio_m,
-			'stock' => $stock,
-			'categoria_id' => $categoria,
-		);
-		if ($this->Productos_model->update($idproducto,$data)) {
-			redirect(base_url()."mantenimiento/productos");
+
+		$productoActual = $this->Productos_model->getProducto($idproducto);
+		if ($codigo == $productoActual->nombre){
+			$unique = '';
+		} else {
+			$unique = "|is_unique[productos.nombre]";
 		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/productos/edit/".$idproducto);
-		}
+
+		$this->form_validation->set_rules("codigo", "Codigo", "integer|is_natural_no_zero|required|is_unique[productos.codigo]");
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha|required".$unique);
+		$this->form_validation->set_rules("precio_e", "Entrada", "decimal|required");
+		$this->form_validation->set_rules("precio", "Precio", "decimal|required");
+		$this->form_validation->set_rules("precio_m", "Mayoreo", "decimal|required");
+		$this->form_validation->set_rules("stock", "Stock", "is_natural_no_zero|integer|required");
+
+		if ($this->form_validation->run()){
+			$data  = array(
+				'codigo' => $codigo, 
+				'nombre' => $nombre,
+				'descripcion' => $descripcion,
+				'precio_entrada' => $precio_e,
+				'precio' => $precio,
+				'precio_mayoreo' => $precio_m,
+				'stock' => $stock,
+				'categoria_id' => $categoria,
+			);
+			if ($this->Productos_model->update($idproducto,$data)) {
+				redirect(base_url()."mantenimiento/productos");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."mantenimiento/productos/edit/".$idproducto);
+			}
+		} else {
+			$this->edit($idproducto);
+		}		
 	}
 	public function delete($id){
 		$data  = array(

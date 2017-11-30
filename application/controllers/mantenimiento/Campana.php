@@ -27,32 +27,44 @@ class Campana extends CI_Controller {
 	public function store(){
 		$nombre = $this->input->post("nombre");
 		$producto = $this->input->post("producto");
+		$cantidad = $this->input->post("cantidad_a_vender");
 		$fechai = $this->input->post("fecha_i");
 		$fechaf = $this->input->post("fecha_f");
 
-		$data  = array(
-			'nombre' => $nombre,
-			'producto' => $producto,
-			'fecha_i' => $fechai,
-			'fecha_f' => $fechaf,
-			'estado' => "1"
-		);
-		$campaña = "Campaña ".$nombre." de ventas en curso";
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha_numeric|required");
+		$this->form_validation->set_rules("cantidad_a_vender", "Cantidad", "integer|is_natural_no_zero|required");
+		$this->form_validation->set_rules("fecha_i", "Fecha inicio", "required");
+		$this->form_validation->set_rules("fecha_f", "Fecha fin", "required");
 
-		$data1  = array(
-			'nombre' => $campaña,
-			'fecha_i' => $fechai,
-			'fecha_f' => $fechaf,
-		);
+		if ($this->form_validation->run()){
+			$data  = array(
+				'nombre' => $nombre,
+				'producto' => $producto,
+				'cantidad_a_vender' => $cantidad,
+				'fecha_i' => $fechai,
+				'fecha_f' => $fechaf,
+				'estado' => "1"
+				);
+			$campaña = "Campaña ".$nombre." de ventas en curso";
 
-		if ($this->Campana_model->save($data)) {
-			$this->Campana_model->save1($data1);
-			redirect(base_url()."mantenimiento/campana");
+			$data1  = array(
+				'nombre' => $campaña,
+				'fecha_i' => $fechai,
+				'fecha_f' => $fechaf,
+			);
+
+			if ($this->Campana_model->save($data)) {
+				$this->Campana_model->save1($data1);
+				redirect(base_url()."mantenimiento/campana");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."mantenimiento/campana #profile1");
+			}
+		} else {
+			$this->index();
 		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/campana #profile1");
-		}
+		
 	}
 
 	public function edit($id){
@@ -71,22 +83,33 @@ class Campana extends CI_Controller {
 		$id = $this->input->post("idCampana");
 		$nombre = $this->input->post("nombre");
 		$producto = $this->input->post("producto");
+		$cantidad = $this->input->post("cantidad_a_vender");
 		$fechai = $this->input->post("fecha_i");
 		$fechaf = $this->input->post("fecha_f");
 
-		$data  = array(
-			'nombre' => $nombre,
-			'producto' => $producto,
-			'fecha_i' => $fechai,
-			'fecha_f' => $fechaf,
-			'estado' => "1"
-		);
-		if ($this->Campana_model->update($id,$data)) {
-			redirect(base_url()."mantenimiento/campana");
-		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/campana/edit/".$id);
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha_numeric|required");
+		$this->form_validation->set_rules("cantidad_a_vender", "Cantidad", "integer|is_natural_no_zero|required");
+		$this->form_validation->set_rules("fecha_i", "Fecha inicio", "required");
+		$this->form_validation->set_rules("fecha_f", "Fecha fin", "required");
+
+		if ($this->form_validation->run()){
+			$data  = array(
+				'nombre' => $nombre,
+				'producto' => $producto,
+				'cantidad_a_vender' => $cantidad,
+				'fecha_i' => $fechai,
+				'fecha_f' => $fechaf,
+				'estado' => "1"
+			);
+			if ($this->Campana_model->update($id,$data)) {
+				redirect(base_url()."mantenimiento/campana");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."mantenimiento/campana/edit/".$id);
+			}
+		} else {
+			$this->edit($id);
 		}
 	}
 	public function delete($id){
