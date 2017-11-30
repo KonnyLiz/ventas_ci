@@ -33,12 +33,13 @@
                 <li><a href="<?php echo base_url();?>mantenimiento/clientes">Clientes</a></li>
                 <li><a href="<?php echo base_url();?>mantenimiento/Usuarios">Usuario</a></li>
                 <li><a href="<?php echo base_url();?>mantenimiento/Reclamos">Reclamos</a></li>
-                <li><a href="forms-wysiwyg.html">WYSIWYG Editor</a></li>
+                <li><a href="<?php echo base_url();?>mantenimiento/Vendedores">Vendedores</a></li>
             </ul>
         </li>
        <li class="sub-menu">
             <a href="javascript:void(0);"><i class="fa fa-money"></i><span>Movimientos</span><i class="arrow fa fa-angle-right pull-right"></i></a>
             <ul>
+                <li><a href="<?php echo base_url();?>mantenimiento/Vendedores">Vendedores</a></li>
                 <li><a href="<?php echo base_url();?>movimientos/ventas/add">Realizar Venta</a></li>
                 <li><a href="<?php echo base_url();?>movimientos/ventas">Registro de Ventas</a></li>
                 <li><a href="<?php echo base_url();?>movimientos/reabastecer/add">Reabastecer</a></li>

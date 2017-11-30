@@ -48,7 +48,7 @@
                 <td><?php echo $venta->fecha;?></td>
                 <td><?php $Usu_id = $venta->usuario_id;
                     $resulUsu= $this->Pdf_model->getPdfusu1($Usu_id);
-                foreach ($resulUsu as $usu) 
+                foreach($resulUsu as $usu) 
                 {
                    echo $usu->nombres;
                 } 
