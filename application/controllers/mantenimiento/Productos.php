@@ -126,6 +126,7 @@ class Productos extends CI_Controller {
 			$this->edit($idproducto);
 		}		
 	}
+	
 	public function delete($id){
 		$data  = array(
 			'estado' => "0", 
