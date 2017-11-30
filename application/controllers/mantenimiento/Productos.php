@@ -32,12 +32,12 @@ class Productos extends CI_Controller {
 		$stock = $this->input->post("stock");
 		$categoria = $this->input->post("categoria");
 
-		$this->form_validation->set_rules("codigo", "Codigo", "required|is_unique[productos.codigo]");
-		$this->form_validation->set_rules("nombre", "Nombre", "required|is_unique[productos.nombre]");
-		$this->form_validation->set_rules("precio_e", "Entrada", "required");
-		$this->form_validation->set_rules("precio", "Precio", "required");
-		$this->form_validation->set_rules("precio_m", "Precio_m", "required");
-		$this->form_validation->set_rules("stock", "Stock", "required");
+		$this->form_validation->set_rules("codigo", "Codigo", "integer|is_natural_no_zero|required|is_unique[productos.codigo]");
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha|required|is_unique[productos.nombre]");
+		$this->form_validation->set_rules("precio_e", "Entrada", "decimal|required");
+		$this->form_validation->set_rules("precio", "Precio", "decimal|required");
+		$this->form_validation->set_rules("precio_m", "Mayoreo", "decimal|required");
+		$this->form_validation->set_rules("stock", "Stock", "is_natural_no_zero|integer|required");
 
 		if ($this->form_validation->run()){
 			$data  = array(
@@ -95,12 +95,12 @@ class Productos extends CI_Controller {
 			$unique = "|is_unique[productos.nombre]";
 		}
 
-		$this->form_validation->set_rules("codigo", "Codigo", "required");
-		$this->form_validation->set_rules("nombre", "Nombre", "required".$unique);
-		$this->form_validation->set_rules("precio_e", "Entrada", "required");
-		$this->form_validation->set_rules("precio", "Precio", "required");
-		$this->form_validation->set_rules("precio_m", "Precio_m", "required");
-		$this->form_validation->set_rules("stock", "Stock", "required");
+		$this->form_validation->set_rules("codigo", "Codigo", "integer|is_natural_no_zero|required|is_unique[productos.codigo]");
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha|required".$unique);
+		$this->form_validation->set_rules("precio_e", "Entrada", "decimal|required");
+		$this->form_validation->set_rules("precio", "Precio", "decimal|required");
+		$this->form_validation->set_rules("precio_m", "Mayoreo", "decimal|required");
+		$this->form_validation->set_rules("stock", "Stock", "is_natural_no_zero|integer|required");
 
 		if ($this->form_validation->run()){
 			$data  = array(

@@ -25,7 +25,7 @@ class Categorias extends CI_Controller {
 		$nombre = $this->input->post("nombre");
 		$descripcion = $this->input->post("descripcion");
 
-		$this->form_validation->set_rules("nombre", "Nombre", "required|is_unique[categorias.nombre]");
+		$this->form_validation->set_rules("nombre", "Nombre", "alpha|required|is_unique[categorias.nombre]");
 
 		if ($this->form_validation->run()) {
 				$data  = array(

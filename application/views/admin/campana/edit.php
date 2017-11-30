@@ -36,12 +36,14 @@
                                         <p><i class="icon fa fa-ban"></i><?php echo $this->session->flashdata("error"); ?></p>
                                         </div>
                                     <?php endif;?>
-                                <form class="form-horizontal form-border" action="<?php echo base_url();?>mantenimiento/campana/update" method="POST">
+                                <form class="form-horizontal form-border " action="<?php echo base_url();?>mantenimiento/campana/update" method="POST">
                                 <input type="hidden" value="<?php echo $campanas->id;?>" name="idCampana">
-                                    <div class="form-group">
+                                    <div class="form-group <?php echo !empty(form_error("nombre"))? 'has-error':'' ?>">
+                                    
                                     <label for="stock">Nombre de la campaña:</label>
                                     
-                                <input type="text" class="form-control" id="stock" name="nombre" value="<?php echo $campanas->nombre?>">
+                                    <input type="text" class="form-control" id="stock" name="nombre" value="<?php echo !empty(form_error("nombre"))? set_value("nombre"):$campanas->nombre?>">
+                                    <?php echo form_error("nombre", "<span class='help-block'>", "</span>");?>
                                    </div>
 
                     
@@ -59,16 +61,18 @@
                                 </select>
                             </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group <?php echo !empty(form_error("fecha_i"))? 'has-error':'' ?>">
                                         <label class="col-sm-3 control-label">Fecha de inicio</label>
                                         <div class="col-sm-6">
-                                            <input type="date" class="form-control" placeholder="Descripcion de la categoria" id="descripcion" name="fecha_i" value="<?php echo $campanas->fecha_i;?> ">
+                                            <input type="date" class="form-control" placeholder="Descripcion de la categoria" id="descripcion" name="fecha_i" value="<?php echo !empty(form_error("fecha_i"))? set_value("fecha_i"):$campanas->fecha_i;?> ">
+                                            <?php echo form_error("fecha_i", "<span class='help-block'>", "</span>");?>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group <?php echo !empty(form_error("fecha_f"))? 'has-error':'' ?>">
                                         <label class="col-sm-3 control-label">Fecha de finalizacion</label>
                                         <div class="col-sm-6">
-                                            <input type="date"  class="form-control" placeholder="Descripcion de la categoria" id="descripcion" name="fecha_f" value="<?php echo $campanas->fecha_f;?> ">
+                                            <input type="date"  class="form-control" placeholder="Descripcion de la categoria" id="descripcion" name="fecha_f" value="<?php echo !empty(form_error("fecha_f"))? set_value("fecha_f"):$campanas->fecha_f;?> ">
+                                            <?php echo form_error("fecha_f", "<span class='help-block'>", "</span>");?>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-md-4 " style="position: relative;">

@@ -112,9 +112,10 @@
                         <?php endif;?>
                                 <form action="<?php echo base_url();?>mantenimiento/campana/store" method="POST">
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("nombre"))? 'has-error':'' ?>">
                                 <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre">
+                                <input value="<?php echo set_value("nombre")?>" type="text" class="form-control" id="nombre" name="nombre">
+                                <?php echo form_error("nombre", "<span class='help-block'>", "</span>");?>
                             </div>
                            <div class="form-group">
                                 <label for="productos">Productos:</label>
@@ -124,16 +125,18 @@
                                     <?php endforeach;?>
                                 </select>
                             </div>
-                             <div class="form-group">
+                             <div class="form-group <?php echo !empty(form_error("fecha_i"))? 'has-error':'' ?>">
                                 <label for="precio">Fecha de inicio:</label>
-                                <input type="date" class="form-control" id="fechai" name="fecha_i">
+                                <input value="<?php echo set_value("fecha_i")?>" type="date" class="form-control" id="fechai" name="fecha_i">
+                                <?php echo form_error("fecha_i", "<span class='help-block'>", "</span>");?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group <?php echo !empty(form_error("fecha_f"))? 'has-error':'' ?>">
                                 <label for="precio">Precio de salida:</label>
-                                <input type="date" class="form-control" id="fechaf" name="fecha_f">
+                                <input value="<?php echo set_value("fecha_f")?>" type="date" class="form-control" id="fechaf" name="fecha_f">
+                                <?php echo form_error("fecha_f", "<span class='help-block'>", "</span>");?>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <button type="submit" class="btn btn-success btn-flat">Guardar</button>
                             </div>
                         </form>
