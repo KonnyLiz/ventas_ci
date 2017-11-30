@@ -47,8 +47,10 @@
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#home1" data-toggle="tab">Lista</a>
                                         </li>
-                                        <li><a href="#profile1" data-toggle="tab">Nuevo</a>
-                                        </li>
+                                        <li>
+                                            <?php if($permisos->insert == 1):?>
+<a href="#profile1" data-toggle="tab">Nuevo</a>
+                                        <?php endif?></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home1">
@@ -90,8 +92,12 @@
                                                     <button type="button" class="btn btn-info btn-view-producto" data-toggle="modal" data-target="#modal-default" value="<?php echo $datausuario;?>">
                                                         <span class="fa fa-search"></span>
                                                     </button>
-                                                    <a href="<?php echo base_url()?>mantenimiento/Vendedores/edit/<?php echo $usuarios->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
-                                                    <a href="<?php echo base_url();?>mantenimiento/Vendedores/delete/<?php echo $usuarios->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+                                                    <?php if($permisos->update == 1):?><a href="<?php echo base_url()?>mantenimiento/Vendedores/edit/<?php echo $usuarios->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
+<?php endif?>
+ <?php if($permisos->delete == 1):?><a href="<?php echo base_url();?>mantenimiento/Vendedores/delete/<?php echo $usuarios->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+<?php endif?>
+                                                    
+                                                    
                                                 </div>
                                             </td>
                                         </tr>

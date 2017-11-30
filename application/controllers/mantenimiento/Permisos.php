@@ -2,9 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Permisos extends CI_Controller {
+private $permisos;
+
 
 	public function __construct(){
 		parent::__construct();
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Permisos_model");
 		$this->load->model("Usuarios_model");
 	}
@@ -101,6 +104,6 @@ class Permisos extends CI_Controller {
 		$this->Permisos_model->update($id,$data);
 		echo "mantenimiento/permisos";*/
 		$this->Permisos_model->delete($id);
-		echo "mantenimiento/permisos";
+		redirect(base_url()."mantenimiento/permisos");
 	}
-}
+}	

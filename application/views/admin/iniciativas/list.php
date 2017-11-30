@@ -83,8 +83,13 @@
                                                     <button type="button" class="btn btn-info btn-view-producto" data-toggle="modal" data-target="#modal-default" value="<?php echo $datainiciativa;?>">
                                                         <span class="fa fa-search"></span>
                                                     </button>
-                                                    <a href="<?php echo base_url()?>mantenimiento/iniciativas/edit/<?php echo $iniciativas->id_iniciativa;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
-                                                    <a href="<?php echo base_url();?>mantenimiento/iniciativas/delete/<?php echo $iniciativas->id_iniciativa;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+
+                                                    <?php if($permisos->update == 1):?><a href="<?php echo base_url()?>mantenimiento/iniciativas/edit/<?php echo $iniciativas->id_iniciativa;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
+<?php endif?>
+ <?php if($permisos->delete == 1):?><a href="<?php echo base_url();?>mantenimiento/iniciativas/delete/<?php echo $iniciativas->id_iniciativa;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+<?php endif?>
+                                                    
+                                                    
                                                 </div>
                                             </td>
                                         </tr>

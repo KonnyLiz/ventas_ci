@@ -33,7 +33,7 @@
     <script src="<?php echo base_url();?>assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
     <!-- ./wrapper -->
     <script>
-$(document).ready(function () {
+$(document).ready(function () { 
 
     $('#example1').DataTable({
         "language": {

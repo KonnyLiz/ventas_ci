@@ -134,6 +134,8 @@
                                                     <button type="button" class="btn btn-info btn-view-producto" data-toggle="modal" data-target="#modal-default" value="<?php echo $datapermisos;?>">
                                                         <span class="fa fa-search"></span>
                                                     </button>
+                                                    
+                                                    
                                                     <a href="<?php echo base_url()?>mantenimiento/permisos/edit/<?php echo $permiso->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
                                                     <a href="<?php echo base_url();?>mantenimiento/permisos/delete/<?php echo $permiso->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
                                                 </div>

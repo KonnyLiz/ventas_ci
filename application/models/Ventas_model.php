@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ventas_model extends CI_Model {
-
+	
 	public function getComprobantes(){
 		$resultados = $this->db->get("tipo_comprobante");
 		return $resultados->result();
@@ -59,13 +59,14 @@ class Ventas_model extends CI_Model {
 
 	//obteniendo los datos de venta por el id de venta
 	public function getVenta($id){
-		$this->db->select("v.*, c.nombre, c.apellidos, c.direccion, c.telefono, tc.nombre as tipo_comprobante");
+		$this->db->select("v.*, c.nombres, c.apellidos, c.direccion, c.telefono, u.nombres as usuNombre, u.apellidos as usuApellido, tc.nombre as tipo_comprobante");
 		 $this->db->from("ventas v");
 		 $this->db->join("clientes c", "v.cliente_id = c.id");
+		 $this->db->join("usuarios u", "v.usuario_id = u.id");
 		 $this->db->join("tipo_comprobante tc", "v.tipo_comprobante_id = tc.id");
 		 $this->db->where("v.id", $id);
 		 $resultado = $this->db->get();
-		 return $resultado->row();
+		 return $resultado->row(); 
 	}
 
 	public function getDetalle($id){

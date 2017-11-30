@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-xs-6">	
 		<b>CLIENTE</b><br>
-		<b>Nombre:</b> <?php echo $venta->nombre;?> <br>
+		<b>Nombre:</b> <?php echo $venta->nombres." ".$venta->apellidos;?> <br>
 		<b>Telefono:</b> <?php echo $venta->telefono;?> <br>
 		<b>Direccion</b> <?php echo $venta->direccion;?><br>
 	</div>	
@@ -22,6 +22,8 @@
 		<b>Fecha</b> <?php echo $venta->fecha;?>
 	</div>	
 </div>
+<b>Vendedor</b> <?php echo $venta->usuNombre." ".$venta->usuApellido;?>
+
 <br>
 <div class="row">
 	<div class="col-xs-12">

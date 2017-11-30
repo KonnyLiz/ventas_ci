@@ -93,7 +93,7 @@
 
                                                     <a href="<?php echo base_url()?>mantenimiento/oportunidades/edit/<?php echo $oportunidades->id_oportunidad;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
                                                     <?php endif?>
-                                                    <?php if($permisos->insert == 1):?>
+                                                    <?php if($permisos->delete == 1):?>
 
                                                     <a href="<?php echo base_url();?>mantenimiento/oportunidades/delete/<?php echo $oportunidades->id_oportunidad;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a><?php endif?>
                                                 </div>

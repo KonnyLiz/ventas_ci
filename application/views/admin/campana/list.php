@@ -47,8 +47,10 @@
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#home1" data-toggle="tab">Lista</a>
                                         </li>
+                                        <?php if($permisos->insert == 1):?>
+
                                         <li><a href="#profile1" data-toggle="tab">Nuevo</a>
-                                        </li>
+                                        </li><?php endif?>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home1">
@@ -84,8 +86,17 @@
                                             <td>
                                                 <div class="btn-group">
                                                     
-                                                    <a href="<?php echo base_url()?>mantenimiento/campana/edit/<?php echo $campana->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
-                                                    <a href="<?php echo base_url();?>mantenimiento/campana/delete/<?php echo $campana->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+<?php if($permisos->update == 1):?><a href="<?php echo base_url()?>mantenimiento/campana/edit/<?php echo $campana->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
+    
+<?php endif?>
+ <?php if($permisos->delete == 1):?> <a href="<?php echo base_url();?>mantenimiento/campana/delete/<?php echo $campana->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+<?php endif?>
+
+
+
+
+                                                    
+                                                   
                                                 </div>
                                             </td>
                                         </tr>

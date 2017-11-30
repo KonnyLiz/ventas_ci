@@ -91,8 +91,15 @@
                                                     <button type="button" class="btn btn-info btn-view-producto" data-toggle="modal" data-target="#modal-default" value="<?php echo $dataproducto;?>">
                                                         <span class="fa fa-search"></span>
                                                     </button>
-                                                    <a href="<?php echo base_url()?>mantenimiento/productos/edit/<?php echo $producto->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
-                                                    <a href="<?php echo base_url();?>mantenimiento/productos/delete/<?php echo $producto->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+</li><?php if($permisos->update == 1):?> <a href="<?php echo base_url()?>mantenimiento/productos/edit/<?php echo $producto->id;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
+                                                    <?php if($permisos->update == 1):?>
+ </li><?php endif?>
+                                                   
+<?php endif?>
+ <?php if($permisos->delete == 1):?> <a href="<?php echo base_url();?>mantenimiento/productos/delete/<?php echo $producto->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+<?php endif?>
+                                                    
+                                                   
                                                 </div>
                                             </td>
                                         </tr>

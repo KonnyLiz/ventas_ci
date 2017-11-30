@@ -3,6 +3,7 @@
 <head>
 <title>Ferreteria xyz</title>
    <?php
+   
     require_once('flyweit.php');
    ?>
 
