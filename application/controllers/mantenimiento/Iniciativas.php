@@ -28,6 +28,7 @@ class Iniciativas extends CI_Controller {
 		$grupo = $this->input->post("grupo");
 		$contacto = $this->input->post("contacto");
 		
+		$this->form_validation->set_rules("nombre", "Nombre", "integer|is_natural_no_zero|required|is_unique[productos.codigo]");
 
 		$data  = array(
 			'grupo' => $grupo,
