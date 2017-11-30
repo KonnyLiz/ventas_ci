@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios extends CI_Controller {
+class Vendedores extends CI_Controller {
 private $permisos;      
 	public function __construct(){
 		parent::__construct();
 		$this->permisos = $this->backend_lib->control();
+		$this->load->model("Vendedores_model");
 		$this->load->model("Usuarios_model");
-		//$this->load->model("Oportunidades_model");
 		$this->load->model("Grupos_model");
 	}
 
@@ -15,7 +15,7 @@ private $permisos;
 	{
 		$data  = array(
 			"permisos" => $this->permisos, 
-			'usuario' => $this->Usuarios_model->getUsuarios2(),
+			'usuario' => $this->Vendedores_model->getUsuarios(),
 			"grupo" => $this->Grupos_model->getGrupos(),
 			//'oportunidad' => $this->Oportunidades_model->getOportunidades(),
 		);
@@ -30,7 +30,7 @@ private $permisos;
 
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/add");
+		$this->load->view("admin/vendedores/add");
 		$this->load->view("layouts/footer");
 	}
 
@@ -62,24 +62,24 @@ private $permisos;
 			'estado' => $estado
 		);
 
-		if ($this->Usuarios_model->save($data)) {
-			redirect(base_url()."mantenimiento/clientes");
+		if ($this->Vendedores_model->save($data)) {
+			redirect(base_url()."mantenimiento/Vendedores");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/Usuarios/add");
+			redirect(base_url()."mantenimiento/Vendedores/add");
 		}
 	}
 
 	public function edit($id){
 		$data  = array(
-			'usuario' => $this->Usuarios_model->getUsuario($id), 
+			'usuario' => $this->Usuarios_model->getUsuario($id),
 			"grupo" => $this->Grupos_model->getGrupos(),
 
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/edit",$data);
+		$this->load->view("admin/vendedores/edit",$data);
 		$this->load->view("layouts/footer");
 	}
 
@@ -112,12 +112,12 @@ private $permisos;
 			'estado' => $estado
 		);
 
-		if ($this->Usuarios_model->update($idusuario,$data)) {
-			redirect(base_url()."mantenimiento/usuarios");
+		if ($this->Vendedores_model->update($idusuario,$data)) {
+			redirect(base_url()."mantenimiento/vendedores");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo actualizar la informacion");
-			redirect(base_url()."mantenimiento/Usuarios/edit/".$idusuario);
+			redirect(base_url()."mantenimiento/vendedores/edit/".$idusuario);
 		}
 	}
 
@@ -125,7 +125,7 @@ private $permisos;
 		$data  = array(
 			'estado' => "0", 
 		);
-		$this->Usuarios_model->update($id,$data);
+		$this->Vendedores_model->update($id,$data);
 		echo "mantenimiento/usuarios";
 	}
 }
