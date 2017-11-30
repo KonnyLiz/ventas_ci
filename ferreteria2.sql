@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2017 a las 06:21:38
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Tiempo de generación: 30-11-2017 a las 07:29:25
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -54,7 +52,7 @@ CREATE TABLE `campanas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `producto` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `cantidad_a_vender` int(11) NOT NULL,
+  `cantidad_a_vender` int(11) DEFAULT NULL,
   `fecha_i` date NOT NULL,
   `fecha_f` date NOT NULL,
   `estado` tinyint(1) NOT NULL
@@ -65,11 +63,9 @@ CREATE TABLE `campanas` (
 --
 
 INSERT INTO `campanas` (`id`, `nombre`, `producto`, `cantidad_a_vender`, `fecha_i`, `fecha_f`, `estado`) VALUES
-(1, 'Navidad', 'tubo', 0, '2017-11-08', '2017-11-22', 1),
-(2, 'Semana Santa', '2', 0, '2017-11-20', '2017-11-30', 1),
-(3, 'Dia de los enamorados', 'clavos', 0, '2018-02-01', '2018-02-15', 1),
-(4, 'escolar', 'tubo', 0, '2017-11-01', '2017-11-02', 1),
-(5, 'adios', 'tubo', 5, '2017-11-08', '2017-11-11', 1);
+(1, 'Navidad', 'clavos', 5, '2017-11-21', '2017-11-30', 1),
+(2, 'Semana Santa', '2', NULL, '2017-11-20', '2017-11-30', 1),
+(3, 'Dia de los enamorados', 'clavos', NULL, '2018-02-01', '2018-02-15', 1);
 
 -- --------------------------------------------------------
 
@@ -89,16 +85,15 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `estado`) VALUES
-(1, 'Fontaneria', 'sins, tuberias pvc y mas   ', 1),
-(2, 'Electricas', 'Conexiones, switch, tomas extenciones y mas   ', 1),
+(1, 'Fontaneria', 'sins, tuberias pvc y mas ', 1),
+(2, 'Electricas', 'Conexiones, switch, tomas extenciones y mas', 1),
 (3, 'Construccion', 'Todo lo relasionado a contruccion', 1),
-(4, 'Hogareño', 'Camas y mas ', 1),
+(4, 'Hogar', 'Camas y mas', 1),
 (5, 'Pintura', 'Cubetas, galones, medios, cuartos y octavos', 1),
 (6, 'Herramientas', 'De todo en herramientas', 1),
 (7, 'Patio', 'Todo lo del patio', 1),
 (8, 'Cemento', 'Gama de cemento', 1),
-(9, 'Ventanas', 'Ventanales', 1),
-(10, 'lol', '', 1);
+(9, 'Ventanas', 'Ventanales', 1);
 
 -- --------------------------------------------------------
 
@@ -108,7 +103,7 @@ INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `estado`) VALUES
 
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
-  `grupo` int(11) DEFAULT NULL,
+  `grupo` int(11) NOT NULL,
   `nombres` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `apellidos` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -126,9 +121,7 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `grupo`, `nombres`, `apellidos`, `telefono`, `dui`, `nit`, `direccion`, `registro`, `empresa`, `estado`) VALUES
 (2, 1, 'kony', '', '08098', '90809', '66', 'sm', '', '', 1),
-(3, 0, 'Hugo', '', '098', '8778', '09809', 'hj', NULL, '', 1),
-(4, NULL, 'Zulmi', 'Amaya', '287267', '09809', '08098', 'sm', '8898', 'hui', 1),
-(5, NULL, 'Nelson', 'Amaya', '9878', '98798', '98098', '09809', '09809', '0980', 1);
+(3, 0, 'Hugo', '', '098', '8778', '09809', 'hj', NULL, '', 1);
 
 -- --------------------------------------------------------
 
@@ -207,9 +200,7 @@ INSERT INTO `eventos` (`id_evento`, `nombre`, `fecha_i`, `fecha_f`) VALUES
 (15, 'true', '2017-11-13 00:00:00', '2017-11-15 00:00:00'),
 (16, 'reload', '2017-11-15 00:00:00', '2017-11-16 00:00:00'),
 (17, 'fuera', '2017-11-16 00:00:00', '2017-11-17 00:00:00'),
-(18, 'wenas45', '2017-11-15 00:00:00', '2017-11-22 00:00:00'),
-(19, 'Campaña escolar de ventas en curso', '2017-11-01 00:00:00', '2017-11-02 00:00:00'),
-(20, 'Campaña hola de ventas en curso', '2017-11-01 00:00:00', '2017-11-04 00:00:00');
+(18, 'wenas45', '2017-11-15 00:00:00', '2017-11-22 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -357,9 +348,29 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio_entrada`, `precio`, `precio_mayoreo`, `stock`, `categoria_id`, `estado`) VALUES
-(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 0),
-(2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 492, 1, 0),
-(4, '02534', 'tubo', '', '0.10', '0.20', '0.15', 50, 1, 1);
+(1, '02534', 'clavos', 'clavo de hierro ferroso', '0.01', '0.05', '0.03', 994, 3, 1),
+(2, '3665', 'Llave inglesa', 'Llave de tuerca', '1.25', '3.00', '2.25', 492, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reclamos`
+--
+
+CREATE TABLE `reclamos` (
+  `id` int(11) NOT NULL,
+  `vendedor` varchar(150) NOT NULL,
+  `producto` varchar(45) NOT NULL,
+  `reclamo` varchar(200) NOT NULL,
+  `estado` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `reclamos`
+--
+
+INSERT INTO `reclamos` (`id`, `vendedor`, `producto`, `reclamo`, `estado`) VALUES
+(1, 'fabiola', 'clavos', 'bueno', 1);
 
 -- --------------------------------------------------------
 
@@ -600,6 +611,12 @@ ALTER TABLE `productos`
   ADD KEY `fk_categoria_producto_idx` (`categoria_id`);
 
 --
+-- Indices de la tabla `reclamos`
+--
+ALTER TABLE `reclamos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -657,17 +674,17 @@ ALTER TABLE `abastecer`
 -- AUTO_INCREMENT de la tabla `campanas`
 --
 ALTER TABLE `campanas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `detalle_abastecer`
 --
@@ -682,7 +699,7 @@ ALTER TABLE `detalle_venta`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
@@ -712,7 +729,12 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `reclamos`
+--
+ALTER TABLE `reclamos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
@@ -805,7 +827,6 @@ ALTER TABLE `ventas`
   ADD CONSTRAINT `fk_cliente_venta` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuario_venta` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`tipo_comprobante_id`) REFERENCES `tipo_comprobante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

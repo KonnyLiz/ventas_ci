@@ -32,7 +32,7 @@
                 <li><a href="<?php echo base_url();?>mantenimiento/oportunidades">Oportunidades</a></li>
                 <li><a href="<?php echo base_url();?>mantenimiento/clientes">Clientes</a></li>
                 <li><a href="<?php echo base_url();?>mantenimiento/Usuarios">Usuario</a></li>
-                <li><a href="forms-multiple-file.html">Multiple File Upload</a></li>
+                <li><a href="<?php echo base_url();?>mantenimiento/Reclamos">Reclamos</a></li>
                 <li><a href="forms-wysiwyg.html">WYSIWYG Editor</a></li>
             </ul>
         </li>
