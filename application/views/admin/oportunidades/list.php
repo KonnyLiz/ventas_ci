@@ -46,9 +46,10 @@
                                 <div class="tab-wrapper tab-primary">
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#home1" data-toggle="tab">Lista</a>
-                                        </li>
+                                        </li><?php if($permisos->insert == 1):?>
+
                                         <li><a href="#profile1" data-toggle="tab">Nuevo</a>
-                                        </li>
+                                        </li><?php endif?>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home1">
@@ -88,8 +89,13 @@
                                                     <button type="button" class="btn btn-info btn-view-producto" data-toggle="modal" data-target="#modal-default" value="<?php echo $dataoportunidad;?>">
                                                         <span class="fa fa-search"></span>
                                                     </button>
+                                                    <?php if($permisos->update == 1):?>
+
                                                     <a href="<?php echo base_url()?>mantenimiento/oportunidades/edit/<?php echo $oportunidades->id_oportunidad;?>" class="btn btn-warning"><span class="fa fa-pencil" style="color: #fff"></span></a>
-                                                    <a href="<?php echo base_url();?>mantenimiento/oportunidades/delete/<?php echo $oportunidades->id_oportunidad;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a>
+                                                    <?php endif?>
+                                                    <?php if($permisos->insert == 1):?>
+
+                                                    <a href="<?php echo base_url();?>mantenimiento/oportunidades/delete/<?php echo $oportunidades->id_oportunidad;?>" class="btn btn-danger btn-remove"><span class="fa fa-times" style="color: #fff"></span></a><?php endif?>
                                                 </div>
                                             </td>
                                         </tr>

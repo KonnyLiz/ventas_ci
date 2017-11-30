@@ -46,9 +46,10 @@
                                 <div class="tab-wrapper tab-primary">
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#home1" data-toggle="tab">Lista</a>
-                                        </li>
+                                        </li><?php if($permisos->insert == 1):?>
+
                                         <li><a href="#profile1" data-toggle="tab">Nuevo</a>
-                                        </li>
+                                        </li><?php endif?>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home1">
