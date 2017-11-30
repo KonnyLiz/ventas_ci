@@ -91,7 +91,18 @@
                                 <?php endif;?>
                             </tbody>
                         </table>
-
+                        <a href="<?php echo base_url();?>pdfcontroller/iniciativa" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte General</button>
+                        </a>
+                        <a href="<?php echo base_url();?>pdfcontroller/iniciativa1" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte Grupo #1</button>
+                        </a>
+                        <a href="<?php echo base_url();?>pdfcontroller/iniciativa2" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte Grupo #2</button>
+                        </a>
+                         <a href="<?php echo base_url();?>pdfcontroller/iniciativa3" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte Grupo #3</button>
+                        </a>
                        </div>
                      </div>
                 </div>

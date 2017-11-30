@@ -61,7 +61,6 @@
                             
                      <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Grupo</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
@@ -70,8 +69,6 @@
                                     <th>Telefono</th>
                                     <th>E-mail</th>
                                     <th>Username</th>
-                                    <th>Rol</th>
-                                    <th>Estado</th>
                                     <th>Accion</th>
                                 </tr>
                             </thead>
@@ -79,7 +76,6 @@
                                 <?php if(!empty($usuario)):?>
                                     <?php foreach($usuario as $usuarios):?>
                                         <tr>
-                                            <td><?php echo $usuarios->id;?></td>
                                             <td><?php echo $usuarios->grupo;?></td>
                                             <td><?php echo $usuarios->nombres;?></td>
                                             <td><?php echo $usuarios->apellidos;?></td>
@@ -88,8 +84,6 @@
                                             <td><?php echo $usuarios->telefono;?></td>
                                             <td><?php echo $usuarios->email;?></td>
                                             <td><?php echo $usuarios->username;?></td>
-                                            <td><?php echo $usuarios->rol_id;?></td>
-                                            <td><?php echo $usuarios->estado;?></td>
                                             <?php $datausuario = $usuarios->id."*".$usuarios->grupo."*".$usuarios->nombres."*".$usuarios->apellidos."*".$usuarios->dui."*".$usuarios->nit."*".$usuarios->telefono."*".$usuarios->email."*".$usuarios->username."*".$usuarios->password."*".$usuarios->rol_id."*".$usuarios->estado;?>
                                             <td>
                                                 <div class="btn-group">
@@ -105,7 +99,9 @@
                                 <?php endif;?>
                             </tbody>
                         </table>
-
+                        <a href="<?php echo base_url();?>pdfcontroller/usuarios" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte General</button>
+                        </a>
                        </div>
                      </div>
                 </div>

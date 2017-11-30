@@ -97,7 +97,22 @@
                                 <?php endif;?>
                             </tbody>
                         </table>
-
+            <!-- Button del pdf General -->
+            <a href="<?php echo base_url();?>pdfcontroller/oportunidades" target="_blank">
+            <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Reporte General</button>
+            </a>
+            <!-- Button del pdf Grupo#1 -->
+            <a href="<?php echo base_url();?>pdfcontroller/oportunidades_1" target="_blank">
+            <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Reporte Grupo #1</button>
+            </a>
+            <!-- Button del pdf Grupo#2 -->
+            <a href="<?php echo base_url();?>pdfcontroller/oportunidades_2" target="_blank">
+            <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Reporte Grupo #2</button>
+            </a>
+            <!-- Button del pdf Grupo#3 -->
+            <a href="<?php echo base_url();?>pdfcontroller/oportunidades_3" target="_blank">
+            <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Reporte Grupo #3</button>
+            </a>
                        </div>
                      </div>
                 </div>

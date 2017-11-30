@@ -13,7 +13,7 @@
               </td>
               <td id="header_texto">
                   <div>Ferreteria XYZ</div>
-                  <div>Reporte General de Oportunidades Echos Clientes Del Grupo #1</div>
+                  <div>Reporte General de Oportunidades Hechos Clientes</div>
               </td>
               <td id="header_logo">
               </td>
@@ -21,7 +21,7 @@
       </table>
   </header>
   <footer>
-      <div id="footer_texto">Reporte de Oportunidades Echo Clientes</div>
+      <div id="footer_texto">Reporte de Oportunidades/Clientes</div>
   </footer>
               <p align="right">
             <?php

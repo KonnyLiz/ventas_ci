@@ -58,17 +58,14 @@
                      <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Grupo</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Telefono</th>
                                     <th>DUI</th>
                                     <th>NIT</th>
+                                    <th>Grupo</th>
                                     <th>Dirección</th>
-                                    <th>Registro</th>
-                                     <th>Empresa</th>
-                                      <th>Estado</th>
-                                      <th>Acción</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,16 +73,13 @@
                                     <?php foreach($cliente as $clientes):?>
                                         <tr>
                                             <td><?php echo $clientes->id;?></td>
-                                             <td><?php echo $clientes->grupo;?></td>
                                             <td><?php echo $clientes->nombres;?></td>
                                             <td><?php echo $clientes->apellidos;?></td>
                                             <td><?php echo $clientes->telefono;?></td>
                                             <td><?php echo $clientes->dui;?></td>
                                             <td><?php echo $clientes->nit;?></td>
+                                             <td><?php echo $clientes->grupo;?></td>
                                             <td><?php echo $clientes->direccion;?></td>
-                                            <td><?php echo $clientes->registro;?></td>
-                                            <td><?php echo $clientes->empresa;?></td>
-                                            <td><?php echo $clientes->estado;?></td>
                                             <?php $datacliente = $clientes->id."*". $clientes->grupo."*".$clientes->nombres."*".$clientes->apellidos."*".$clientes->telefono."*".$clientes->dui."*".$clientes->nit."*".$clientes->direccion."*".$clientes->registro."*".$clientes->empresa."*".$clientes->estado;?>
                                             <td>
                                                 <div class="btn-group">
@@ -101,9 +95,20 @@
                                 <?php endif;?>
                             </tbody>
                         </table>
-                         <a href="<?php echo base_url();?>pdfcontroller/clientes" target="_blank">
-                                    <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Generrar Reporte</button>
-                                    </a>
+                        <!--PDF-->
+                        <a href="<?php echo base_url();?>pdfcontroller/clientes" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte General</button>
+                        </a>
+                        <a href="<?php echo base_url();?>pdfcontroller/clientes1" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i>Reporte Gurpo #1</button>
+                        </a>
+                         </a>
+                        <a href="<?php echo base_url();?>pdfcontroller/clientes2" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Reporte Gurpo #2</button>
+                        </a>
+                        <a href="<?php echo base_url();?>pdfcontroller/clientes3" target="_blank">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Reporte Gurpo #3</button>
+                        </a>
                        </div>
                      </div>
                 </div>

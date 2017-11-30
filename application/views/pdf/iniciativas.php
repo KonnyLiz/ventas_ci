@@ -13,7 +13,7 @@
               </td>
               <td id="header_texto">
                   <div>Ferreteria XYZ</div>
-                  <div>Reporte de Campañas</div>
+                  <div>Reporte de Iniciativas</div>
               </td>
               <td id="header_logo">
               </td>
@@ -21,7 +21,7 @@
       </table>
   </header>
   <footer>
-      <div id="footer_texto">Reporte de Campañas</div>
+      <div id="footer_texto">Reporte de Iniciativas</div>
   </footer>
 <p align="right">
 <?php
@@ -50,30 +50,25 @@ $nuevafecha = date ( 'j/m/Y  H:i:s' , $nuevafecha );
             echo $dia." de ".$m." de ".$anio;
             ?>
 </p>
+  <p align="left"><b> Iniciativas</b></p>
   <table border="1" id="table_info">
        <thead>
            <tr>
                <th>#</th>
+               <th>Grupo</th>
                <th>Nombre</th>
-               <th>Producto</th>
-               <th>Fecha de Inicio</th>
-               <th>Fecha de Finalizacion</th>
+               <th>Contacto</th>
            </tr>
        </thead>
        <tbody>
-          <?php foreach ($resulCampana as $campana) { ?>
+          <?php foreach ($resulIniciativas as $iniciativa) { ?>
             <tr>
-                <td><?php echo $campana->id;?></td>
-                <td><?php echo $campana->nombre;?></td>
-                <td><?php echo $campana->producto;?></td>
-                <td><?php echo $campana->fecha_i;?></td>
-                <td><?php echo $campana->fecha_f;?></td>
+                <td><?php echo $iniciativa->id_iniciativa;?></td>
+                <td><?php echo $iniciativa->grupo;?></td>
+                <td><?php echo $iniciativa->nombre;?></td>
+                <td><?php echo $iniciativa->contacto;?></td>
             </tr>
           <?php  }?>
        </tbody>
-</table>
-
-
-
 </body>
 </html>
