@@ -11,7 +11,7 @@
                             <li class="active">Lista</li>
                         </ul>
 
-<h1>Reabastecer</h1>
+<h1>Reabastecimientos</h1>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
