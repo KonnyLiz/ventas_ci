@@ -102,7 +102,7 @@
                             <?php endforeach;?>
                         <div class="dashboard-tile detail tile-red" style="background-color:#20B2AA   ;color: #fff">
                             <div class="content">
-                                <h1 class="text-left timer"><?php echo $cant ?> Oportunidades</h1>
+                                <h1 class="text-left timer"><?php echo $cant ?>Oportunidades</h1>
                                 <p>Oportunidades</p>
                             </div>
                             <div class="icon"><i class="fa fa-users"></i>
