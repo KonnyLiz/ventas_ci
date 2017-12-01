@@ -16,15 +16,24 @@
             </div>
         <?php endif;?>
 
+        <h1>Reabastecer</h1>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   
+    <!-- Main content -->
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Datos</h3>
+                                
+    </div>
+    <div class="panel-body">
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-        Productos
-        <small>Reabastecer</small>
-        </h1>
-    </section>
+    
 
     <section class="content">
         <!-- Default box -->
@@ -88,6 +97,10 @@
         </div>
         <!-- /.box -->
     </section>
+    </div>
+    </div>
+    </div>
+    </div>
     <!-- /.content -->
 </div>
 

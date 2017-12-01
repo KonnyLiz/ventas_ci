@@ -11,15 +11,22 @@
                             <li class="active">Lista</li>
                         </ul>
 
+<h1>Reabastecer</h1>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-        Reabastecer
-        <small>Listado</small>
-        </h1>
-    </section>
+   
+    <!-- Main content -->
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Datos</h3>
+                                
+    </div>
+    <div class="panel-body">
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
 
     
      <!--main content start Inicio de pagina agregar venta-->
@@ -72,6 +79,10 @@
         </div>
         <!-- /.box -->
     </section>
+    </div>
+    </div>
+    </div>
+    </div>
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
