@@ -11,22 +11,32 @@
                             <li class="active">Agregar Venta</li>
                         </ul>
 
+ 
+ <h1 class="">Ventas</h1>
+ 
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-        Ventas
-        <small>Nuevo</small>
-        </h1>
-    </section>
+   
     <!-- Main content -->
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Datos</h3>
+                                
+    </div>
+    <div class="panel-body">
+<div class="content-wrapper">
+<div class="col-md-12">
+    <div class="panel panel-default">
     <section class="content">
         <!-- Default box -->
         <div class="box box-solid">
             <div class="box-body">
                 <div class="row">
+
+
                     
                         <div class="col-md-3" style="padding-bottom: 12px">
                                     <label for="">Fecha:</label>
@@ -139,6 +149,7 @@
                                 
                             </div>
                         </form>
+                        </div></div></div></div>
                     </div>
                 </div>
             </div>

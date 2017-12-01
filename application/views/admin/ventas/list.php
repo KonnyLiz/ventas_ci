@@ -10,20 +10,25 @@
                             <li>Ventas</li>
                             <li class="active">Lista</li>
                         </ul>
-
+<h1>Lista de Ventas</h1>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-        Ventas
-        <small>Listado</small>
-        </h1>
-    </section>
+   
 
     
      <!--main content start Inicio de pagina agregar venta-->
-         
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   
+    <!-- Main content -->
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Datos</h3>
+                                
+    </div>
+    <div class="panel-body">       
 
     <!-- Main content -->
     <section class="content">
@@ -32,10 +37,10 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <?php if($permisos->insert == 1):?>
+                        <?php //if($permisos->insert == 1):?>
 
                         <a href="<?php echo base_url();?>movimientos/ventas/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Venta</a>
-                    <?php endif?></div>
+                    <?php// endif?></div>
                 </div>
                 <hr>
                 <div class="row">
@@ -81,6 +86,10 @@
         </div>
         <!-- /.box -->
     </section>
+    </div>
+    </div>
+    </div>
+    </div>
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
