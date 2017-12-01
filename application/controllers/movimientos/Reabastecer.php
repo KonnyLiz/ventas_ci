@@ -2,9 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reabastecer extends CI_Controller {
-
+private $permisos;   
 	public function __construct(){
 		parent::__construct();
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Reabastecer_model");
 		$this->load->model("Productos_model");
 	}
@@ -18,6 +19,7 @@ class Reabastecer extends CI_Controller {
 
 	public function index(){
 		$data = array(
+			"permisos" => $this->permisos, 
 			'abastecer' => $this->Reabastecer_model->getAbastecimientos(),
 		);
 		$this->load->view("layouts/header");
